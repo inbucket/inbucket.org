@@ -59,17 +59,12 @@ disk - no external SMTP or database daemons required.</p>
 <p>Grab the Inbucket source code and compile the daemon:</p>
 
 <pre><code>go get -v github.com/jhillyerd/inbucket
-go get -v github.com/gorilla/mux
-go get -v github.com/gorilla/sessions
-go get -v thegoods.biz/httpbuf
-cd $GOPATH/src/github.com/jhillyerd/inbucket
-go build main/inbucketd.go
 </code></pre>
 
-<p>Edit conf/inbucket.conf and tailor to your environment.  It should work on most
-Unix and OS X machines as is.</p>
+<p>Edit etc/inbucket.conf and tailor to your environment.  It should work on most
+Unix and OS X machines as is.  Launch the daemon:</p>
 
-<pre><code>./inbucketd conf/inbucket.conf
+<pre><code>$GOPATH/bin/inbucket $GOPATH/src/github.com/jhillyerd/inbucket/etc/inbucket.conf
 </code></pre>
 
 <p>By default the SMTP server will be listening on localhost port 2500 and
