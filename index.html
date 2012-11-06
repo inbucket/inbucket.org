@@ -44,15 +44,39 @@ no password is required to browse the content of the mailboxes.</p>
 <p>Inbucket has a built-in SMTP server and stores incoming mail as flat files on
 disk - no external SMTP or database daemons required.</p>
 
-<h2>Screenshots</h2>
+<h2>Features</h2>
+
+<ul>
+<li>Receive and store E/SMTP messages</li>
+<li>List messages in a mailbox</li>
+<li>Displays:
+
+<ul>
+<li>Text content of a particular message</li>
+<li>Source of a message (headers + body text)</li>
+<li>HTML version of a message (in a new window)</li>
+</ul>
+</li>
+<li>List MIME attachments with buttons to display or download</li>
+<li>Delete a message</li>
+<li>Purge messages after a configurable amount of time</li>
+<li>Optional load test mode; messages are never written to disk</li>
+</ul><p>It does not yet:</p>
+
+<ul>
+<li>Display inline attachments within HTML email</li>
+</ul><h2>Screenshots</h2>
 
 <p><img src="http://cloud.github.com/downloads/jhillyerd/inbucket/inbucket-ss1.png" alt="An Email"><em>Viewing an email in Inbucket.</em></p>
 
-<p><img src="http://cloud.github.com/downloads/jhillyerd/inbucket/inbucket-ss2.png" alt="Metrics"><em>Monitoring metrics while Inbucket handles over 4,000 messages per minute.</em></p>
+<p><img src="http://cloud.github.com/downloads/jhillyerd/inbucket/inbucket-ss2.png" alt="Metrics"><em>Watching metrics while Inbucket recieves and stores over 4,000 messages per minute.</em></p>
 
 <h2>Development Status</h2>
 
-<p>Inbucket is currently alpha quality: it works but is not well tested.</p>
+<p>Inbucket is currently beta quality: it works but is not well tested.</p>
+
+<p>Please check the <a href="https://github.com/jhillyerd/inbucket/issues?state=open">issues list</a>
+for more details.</p>
 
 <h2>Installation</h2>
 
@@ -71,6 +95,8 @@ Unix and OS X machines as is.  Launch the daemon:</p>
 
 <p>By default the SMTP server will be listening on localhost port 2500 and
 the web interface will be available at <a href="http://localhost:9000/">localhost:9000</a>.</p>
+
+<p>There are RedHat EL6 init, logrotate and httpd proxy configs provided.</p>
 
 <h2>About</h2>
 
