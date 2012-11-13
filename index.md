@@ -1,46 +1,78 @@
 ---
 layout: page
-title: Hello World!
-tagline: Supporting tagline
+title: Inbucket
+tagline: Simple disposable webmail system
 ---
 {% include JB/setup %}
 
-Read [Jekyll Quick Start](http://jekyllbootstrap.com/usage/jekyll-quick-start.html)
+Inbucket is an email testing service; it will accept messages for any email
+address and make them available to view via a web interface.
 
-Complete usage and documentation available at: [Jekyll Bootstrap](http://jekyllbootstrap.com)
+It allows web developers, software engineers and system administrators to
+quickly see the emailed output of ther applications.  No per-account setup is
+required! Mailboxes are created on the fly as mail is received for them, and
+no password is required to browse the content of the mailboxes.
 
-## Update Author Attributes
+Inbucket has a built-in SMTP server and stores incoming mail as flat files on
+disk - no external SMTP or database daemons required.
 
-In `_config.yml` remember to specify your own data:
-    
-    title : My Blog =)
-    
-    author :
-      name : Name Lastname
-      email : blah@email.test
-      github : username
-      twitter : username
+Inbucket in action: [Screenshots]({{ BASE_PATH }}screenshots.html)
 
-The theme should reference these variables whenever needed.
-    
-## Sample Posts
+Features
+--------
 
-This blog contains sample posts which help stage pages and blog data.
-When you don't need the samples anymore just delete the `_posts/core-samples` folder.
+SMTP features:
 
-    $ rm -rf _posts/core-samples
+ * Receive and store E/SMTP messages
+ * Purge messages after a configurable amount of time
+ * Optional load test mode; messages are never written to disk
 
-Here's a sample "posts list".
+Web interface features:
 
-<ul class="posts">
-  {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
+ * List messages in a mailbox
+ * Displays text content of a particular message
+ * Displays source of a message (headers + body text)
+ * Displays HTML version of a message (in a new window)
+ * List MIME attachments with buttons to display or download
+ * Delete a message
 
-## To-Do
+Not implemented yet:
 
-This theme is still unfinished. If you'd like to be added as a contributor, [please fork](http://github.com/plusjade/jekyll-bootstrap)!
-We need to clean up the themes, make theme usage guides with theme-specific markup examples.
+ * Display inline attachments within HTML email
 
+Development Status
+------------------
+
+Inbucket is currently beta quality: it works but is not well tested.
+
+Please check the [issues list](https://github.com/jhillyerd/inbucket/issues?state=open)
+for more details.
+
+Installation
+------------
+
+You will need a functioning [Go installation][1] for this to work. 
+
+Grab the Inbucket source code and compile the daemon:
+
+    go get -v github.com/jhillyerd/inbucket
+
+Edit etc/inbucket.conf and tailor to your environment.  It should work on most
+Unix and OS X machines as is.  Launch the daemon:
+
+    $GOPATH/bin/inbucket $GOPATH/src/github.com/jhillyerd/inbucket/etc/inbucket.conf
+
+By default the SMTP server will be listening on localhost port 2500 and
+the web interface will be available at [localhost:9000](http://localhost:9000/).
+
+There are RedHat EL6 init, logrotate and httpd proxy configs provided.
+
+About
+-----
+Inbucket is written in [Google Go][1].
+
+Inbucket is open source software released under the MIT License.  The latest
+version can be found at https://github.com/jhillyerd/inbucket
+
+[1]: http://golang.org/
 
