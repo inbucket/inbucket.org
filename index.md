@@ -16,7 +16,7 @@ no password is required to browse the content of the mailboxes.
 Inbucket has a built-in SMTP server and stores incoming mail as flat files on
 disk - no external SMTP or database daemons required.
 
-Inbucket in action: [Screenshots]({{ BASE_PATH }}screenshots.html)
+Inbucket in action: [Screenshots]({{ BASE_PATH }}/screenshots.html)
 
 Features
 --------
