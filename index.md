@@ -48,31 +48,26 @@ Inbucket is currently beta quality: it works but is not well tested.
 Please check the [issues list](https://github.com/jhillyerd/inbucket/issues?state=open)
 for more details.
 
+The source code can be found on [github](https://github.com/jhillyerd/inbucket).
+
 Installation
 ------------
 
-You will need a functioning [Go installation][1] for this to work. 
+Precompiled binaries are available on the github
+[downloads page](https://github.com/jhillyerd/inbucket/downloads).  I don't compile new
+binaries each time I commit a change, so you'll want to compile from source to get the
+latest version.
 
-Grab the Inbucket source code and compile the daemon:
+Guides:
 
-    go get -v github.com/jhillyerd/inbucket
-
-Edit etc/inbucket.conf and tailor to your environment.  It should work on most
-Unix and OS X machines as is.  Launch the daemon:
-
-    $GOPATH/bin/inbucket $GOPATH/src/github.com/jhillyerd/inbucket/etc/inbucket.conf
-
-By default the SMTP server will be listening on localhost port 2500 and
-the web interface will be available at [localhost:9000](http://localhost:9000/).
-
-There are RedHat EL6 init, logrotate and httpd proxy configs provided.
+ * [Installation from Source]({{ BASE_PATH }}/installation/from-source.html)
 
 About
 -----
 Inbucket is written in [Google Go][1].
 
 Inbucket is open source software released under the MIT License.  The latest
-version can be found at https://github.com/jhillyerd/inbucket
+version can be found at [github](https://github.com/jhillyerd/inbucket).
 
 [1]: http://golang.org/
 
