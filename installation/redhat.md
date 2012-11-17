@@ -7,10 +7,22 @@ description: "How to install Inbucket on RedHat Linux"
 
 ## Install Inbucket on RedHat EL 6 or one of its clones
 
+### 1. Copy Distribution
+Move or copy your Inbucket distribution to the `/opt` directory.  I recommend you
+keep the version number or build date in the name, and create a symbolic link
+from `inbucket` to that name to make upgrading/downgrading easier.
+
+Example assuming you had a binary distribution tarball in root's home directory:
+
+    cd /opt
+    tar xjvf ~/inbucket-YYYYMMDD-linux_amd64.tbz2
+    ln -s inbucket-YYYYMMDD-linux_amd64/ inbucket
+    cd inbucket/etc/redhat-el6
+
 The steps below should be run as root from the etc/redhat-el6 directory within your
 Inbucket source or binary distribution.
 
-### 1. Service Account
+### 2. Create Service Account
 Create a service account for the daemon to run under.
 
 *NOTE:* there is a [cap][1] command in the init script that allows inbucket to listen on
@@ -18,20 +30,20 @@ privileged ports (such as 25 and 80) without running as root.
 
     useradd -r -m inbucket
 
-### 2. Data Store
+### 3. Create Data Store
 Create the directory where mail will be stored and make it writable by inbucket:
 
     mkdir /var/opt/inbucket
     chown inbucket: /var/opt/inbucket
 
-### 3. Log Rotation
+### 4. Setup Log Rotation
 Copy logrotate config into place, it should inherit most of the defaults setup in
 /etc/logrotate.conf
 
-    cp inbucket.logrotate /etc/logrotate.d/logrotate
+    cp inbucket.logrotate /etc/logrotate.d/inbucket
     chown root: /etc/logrotate.d/logrotate
 
-### 4. Init Script
+### 5. Install Init Script
 Copy init script into place and activate:
 
     cp inbucket-init.sh /etc/init.d
@@ -39,7 +51,7 @@ Copy init script into place and activate:
     chmod 755 /etc/init.d/inbucket
     chkconfig --add inbucket
 
-### 5. Configure
+### 6. Configure Inbucket
 Copy the sample config into place:
 
     cp ../unix-sample.conf /etc/opt/inbucket.conf
@@ -47,7 +59,7 @@ Copy the sample config into place:
 
 Confirm the contents of /etc/opt/inbucket.conf are to your liking.
 
-### 6. Start & Verify
+### 7. Start & Verify Inbucket
 Start the daemon:
 
     service inbucket start
