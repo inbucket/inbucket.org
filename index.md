@@ -62,6 +62,7 @@ Guides:
 
  * [Installation from Source]({{ BASE_PATH }}/installation/from-source.html)
  * [RedHat Installation]({{ BASE_PATH }}/installation/redhat.html)
+ * [Ubuntu Installation]({{ BASE_PATH }}/installation/ubuntu.html)
 
 About
 -----

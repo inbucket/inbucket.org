@@ -25,7 +25,7 @@ Inbucket source or binary distribution.
 ### 2. Create Service Account
 Create a service account for the daemon to run under.
 
-*NOTE:* there is a [cap][1] command in the init script that allows inbucket to listen on
+*NOTE:* there is a [setcap][1] command in the init script that allows inbucket to listen on
 privileged ports (such as 25 and 80) without running as root.
 
     useradd -r -m inbucket
