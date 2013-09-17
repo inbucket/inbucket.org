@@ -13,19 +13,20 @@ quickly see the emailed output of ther applications.  No per-account setup is
 required! Mailboxes are created on the fly as mail is received for them, and
 no password is required to browse the content of the mailboxes.
 
-Inbucket has a built-in SMTP server and stores incoming mail as flat files on
-disk - no external SMTP or database daemons required.
+Inbucket has built-in SMTP and POP3 servers which store incoming mail as flat
+files on disk - no external SMTP or database daemons required.
 
 Inbucket in action: [Screenshots]({{ BASE_PATH }}/screenshots.html)
 
 Features
 --------
 
-SMTP features:
+Mail features:
 
  * Receive and store E/SMTP messages
  * Purge messages after a configurable amount of time
  * Optional load test mode; messages are never written to disk
+ * Access mail via embedded POP3 server
 
 Web interface features:
 
@@ -53,10 +54,8 @@ The source code can be found on [github](https://github.com/jhillyerd/inbucket).
 Installation
 ------------
 
-Precompiled binaries are available on the github
-[downloads page](https://github.com/jhillyerd/inbucket/downloads).  I don't compile new
-binaries each time I commit a change, so you'll want to compile from source to get the
-latest version.
+Precompiled binaries are available for download on our
+[bintray repository](https://bintray.com/jhillyerd/golang/inbucket).
 
 Guides:
 
