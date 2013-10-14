@@ -18,6 +18,8 @@ files on disk - no external SMTP or database daemons required.
 
 Inbucket in action: [Screenshots]({{ BASE_PATH }}/screenshots.html)
 
+Download the latest release here: [bintray quick links]({{ BASE_PATH}}/bintray.html)
+
 Features
 --------
 
