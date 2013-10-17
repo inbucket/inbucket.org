@@ -4,23 +4,23 @@ title: Downloads
 ---
 Files hosted at [bintray.com](https://bintray.com)
 
-inbucket downloads (version 20131013-snapshot)
+inbucket downloads (version 1.0-rc1)
 
 ### Darwin (Apple Mac)
 
- * [inbucket\_20131013-snapshot\_darwin\_amd64.zip](https://dl.bintray.com//content/jhillyerd/golang/inbucket_20131013-snapshot_darwin_amd64.zip?direct)
+ * [inbucket\_1.0-rc1\_darwin\_amd64.zip](https://dl.bintray.com//content/jhillyerd/golang/inbucket_1.0-rc1_darwin_amd64.zip?direct)
 
 ### FreeBSD
 
- * [inbucket\_20131013-snapshot\_freebsd\_amd64.zip](https://dl.bintray.com//content/jhillyerd/golang/inbucket_20131013-snapshot_freebsd_amd64.zip?direct)
+ * [inbucket\_1.0-rc1\_freebsd\_amd64.zip](https://dl.bintray.com//content/jhillyerd/golang/inbucket_1.0-rc1_freebsd_amd64.zip?direct)
 
 ### Linux
 
- * [inbucket\_20131013-snapshot\_linux\_amd64.tar.gz](https://dl.bintray.com//content/jhillyerd/golang/inbucket_20131013-snapshot_linux_amd64.tar.gz?direct)
+ * [inbucket\_1.0-rc1\_linux\_amd64.tar.gz](https://dl.bintray.com//content/jhillyerd/golang/inbucket_1.0-rc1_linux_amd64.tar.gz?direct)
 
 ### MS Windows
 
- * [inbucket\_20131013-snapshot\_windows\_amd64.zip](https://dl.bintray.com//content/jhillyerd/golang/inbucket_20131013-snapshot_windows_amd64.zip?direct)
+ * [inbucket\_1.0-rc1\_windows\_amd64.zip](https://dl.bintray.com//content/jhillyerd/golang/inbucket_1.0-rc1_windows_amd64.zip?direct)
 
 
 
