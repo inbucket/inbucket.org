@@ -27,6 +27,7 @@ Mail features:
 
  * Receive and store E/SMTP messages
  * Purge messages after a configurable amount of time
+ * Enforce a cap on the number of messages per mailbox by deleting older messages
  * Optional load test mode; messages are never written to disk
  * Access mail via embedded POP3 server
 
@@ -38,15 +39,12 @@ Web interface features:
  * Displays HTML version of a message (in a new window)
  * List MIME attachments with buttons to display or download
  * Delete a message
+ * RESTful: [REST API docs](https://github.com/jhillyerd/inbucket/wiki/REST-API)
 
-Not implemented yet:
-
- * Display inline attachments within HTML email
-
-Development Status
+Development Status [![Build Status](https://travis-ci.org/jhillyerd/inbucket.png?branch=master)](https://travis-ci.org/jhillyerd/inbucket)
 ------------------
 
-Inbucket is currently beta quality: it works but is not well tested.
+Inbucket is currently release-candidate quality: it is being used for real work.
 
 Please check the [issues list](https://github.com/jhillyerd/inbucket/issues?state=open)
 for more details.
