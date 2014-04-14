@@ -9,7 +9,7 @@ Inbucket is an email testing service; it will accept messages for any email
 address and make them available to view via a web interface.
 
 It allows web developers, software engineers and system administrators to
-quickly see the emailed output of ther applications.  No per-account setup is
+quickly see the emailed output of their applications.  No per-account setup is
 required! Mailboxes are created on the fly as mail is received for them, and
 no password is required to browse the content of the mailboxes.
 
