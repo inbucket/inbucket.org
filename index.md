@@ -44,7 +44,7 @@ Web interface features:
 Development Status [![Build Status](https://travis-ci.org/jhillyerd/inbucket.png?branch=master)](https://travis-ci.org/jhillyerd/inbucket)
 ------------------
 
-Inbucket is currently release-candidate quality: it is being used for real work.
+Inbucket is currently production quality: it is being used for real work.
 
 Please check the [issues list](https://github.com/jhillyerd/inbucket/issues?state=open)
 for more details.
