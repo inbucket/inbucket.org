@@ -2,8 +2,10 @@
 # For more see: https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink: /:categories/:year/:month/:day/:title 
 
-exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
+exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md",
+  "Gemfile", "Gemfile.lock", "jekyll.sh"]
 pygments: true
+markdown: kramdown
 
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
@@ -12,9 +14,9 @@ title : Inbucket
 tagline: Simple disposable webmail system
 author :
   name : James Hillyerd
-  email : james@hillyerd.com
+  #email : email
   github : jhillyerd
-  twitter : yimmy149
+  twitter : jameshillyerd
   #feedburner : feedname
 
 # The production_url is only used when full-domain names are needed
@@ -25,7 +27,7 @@ author :
 # Else if you are pushing to username.github.com, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : http://inbucket.org
+production_url : http://www.inbucket.org
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
