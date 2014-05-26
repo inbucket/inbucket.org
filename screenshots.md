@@ -1,9 +1,8 @@
 ---
-layout: page
+layout: default
 title: Screenshots
 description: "Inbucket Screenshots"
 ---
-{% include JB/setup %}
 
 ### Viewing an email
 ![An Email]({{ BASE_PATH }}/images/inbucket-ss1.png)

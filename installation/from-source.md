@@ -1,9 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Installation From Source"
 description: "How to install Inbucket from source"
 ---
-{% include JB/setup %}
 
 ## Prerequisites
 

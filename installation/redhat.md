@@ -1,9 +1,8 @@
 ---
-layout: page
+layout: default
 title: "RedHat Installation"
 description: "How to install Inbucket on RedHat Linux"
 ---
-{% include JB/setup %}
 
 ## Install Inbucket on RedHat EL 6 or one of its clones
 

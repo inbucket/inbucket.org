@@ -1,9 +1,8 @@
 ---
-layout: page
+layout: default
 title: Inbucket
 tagline: Simple disposable webmail system
 ---
-{% include JB/setup %}
 
 Inbucket is an email testing service; it will accept messages for any email
 address and make them available to view via a web interface.

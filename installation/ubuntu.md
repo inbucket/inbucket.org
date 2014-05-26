@@ -1,9 +1,8 @@
 ---
-layout: page
+layout: default
 title: "Ubuntu Installation"
 description: "How to install Inbucket on Ubuntu Linux"
 ---
-{% include JB/setup %}
 
 ## Install Inbucket on Ubuntu 12.04 or similar
 
