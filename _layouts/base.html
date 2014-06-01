@@ -8,6 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="{{BASE_PATH}}/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{BASE_PATH}}/css/inbucket.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -15,74 +16,44 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-      html {
-	position: relative;
-	min-height: 100%;
-      }
-
-      body {
-	padding-top: 70px;
-	margin-bottom: 60px;
-      }
-
-      #content {
-	padding-bottom: 70px;
-      }
-
-      #footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	min-height: 60px;
-	background-color: #f5f5f5;
-      }
-
-      #footer .text-muted {
-	font-size: 90%;
-	text-align: center;
-	margin: 20px 0;
-      }
-    </style>
   </head>
   <body>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-	<div class="navbar-header">
-	  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	    <span class="sr-only">Toggle navigation</span>
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>
-	    <span class="icon-bar"></span>
-	  </button>
-	  <a class="navbar-brand" href="{{BASE_PATH}}/">{{site.name}}</a>
-	</div>
-	<div class="collapse navbar-collapse">
-	  <ul class="nav navbar-nav">
-	    <li class="{{page.news}}"><a href="{{BASE_PATH}}/news/">News</a></li>
-	    <li class="{{page.features}}"><a href="{{BASE_PATH}}/features/">Features</a></li>
-	    <li class="{{page.screenshots}}"><a href="{{BASE_PATH}}/screenshots/">Screenshots</a></li>
-	    <li class="dropdown">
-	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get It
-		<b class="caret"></b></a>
-	      <ul class="dropdown-menu">
-		<li><a href="{{BASE_PATH}}/bintray.html">Binaries</a></li>
-		<li><a href="#">Docker Image</a></li>
-		<li><a href="https://github.com/jhillyerd/inbucket">Source on GitHub</a></li>
-	      </ul>
-	    </li>
-	    <li class="dropdown">
-	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Installation
-		<b class="caret"></b></a>
-	      <ul class="dropdown-menu">
-		<li><a href="{{BASE_PATH}}/installation/from-source.html">From Source</a></li>
-		<li><a href="{{BASE_PATH}}/installation/redhat.html">RedHat Linux</a></li>
-		<li><a href="{{BASE_PATH}}/installation/ubuntu.html">Ubuntu Linux</a></li>
-	      </ul>
-	    </li>
-	  </ul>
-	</div>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{BASE_PATH}}/">{{site.name}}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="{{page.news}}"><a href="{{BASE_PATH}}/news/">News</a></li>
+            <li class="{{page.features}}"><a href="{{BASE_PATH}}/features/">Features</a></li>
+            <li class="{{page.screenshots}}"><a href="{{BASE_PATH}}/screenshots/">Screenshots</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Get It
+                <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{BASE_PATH}}/bintray.html">Binaries</a></li>
+                <li><a href="#">Docker Image</a></li>
+                <li><a href="https://github.com/jhillyerd/inbucket">Source on GitHub</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Installation
+                <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="{{BASE_PATH}}/installation/from-source.html">From Source</a></li>
+                <li><a href="{{BASE_PATH}}/installation/redhat.html">RedHat Linux</a></li>
+                <li><a href="{{BASE_PATH}}/installation/ubuntu.html">Ubuntu Linux</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -92,11 +63,12 @@
 
     <div id="footer">
       <div class="container">
-	<p class="text-muted">
-	  &copy; James Hillyerd 2014 with help from <a href="http://getbootstrap.com/"
-	    target="_blank">Twitter Bootstrap</a>.
-	  Inbucket is open source software released under the MIT License.
-	</p>
+        <p class="text-muted">
+          &copy; James Hillyerd 2014 with help from <a href="http://getbootstrap.com/"
+            target="_blank">Bootstrap</a> and
+          <a href="http://bootswatch.com/">Bootswatch</a>.
+          Inbucket is open source software released under the MIT License.
+        </p>
       </div>
     </div>
 
