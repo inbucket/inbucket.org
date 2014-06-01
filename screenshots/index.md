@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Screenshots
+screenshots: active
 description: "Inbucket Screenshots"
 ---
 
