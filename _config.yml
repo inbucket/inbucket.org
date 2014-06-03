@@ -1,4 +1,4 @@
-exclude: [".rvmrc", ".rbenv-version", "Gemfile", "Gemfile.lock", "jekyll.sh"]
+exclude: ["Gemfile", "Gemfile.lock", "jekyll.sh"]
 pygments: true
 markdown: kramdown
 
@@ -12,4 +12,11 @@ markdown: kramdown
 #
 production_url: http://www.inbucket.org
 
+# Site-wide variables
 name: Inbucket
+
+# Blog Config
+permalink: /news/:year/:month/:title.html
+paginate: 5
+paginate_path: "news/page:num"
+
