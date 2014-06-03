@@ -1,8 +1,7 @@
 ---
 layout: default
 title: Screenshots
-screenshots: active
-description: "Inbucket Screenshots"
+group: screenshots
 ---
 
 ### Viewing an email

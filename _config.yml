@@ -14,6 +14,10 @@ production_url: http://www.inbucket.org
 
 # Site-wide variables
 name: Inbucket
+navbar:
+  - {group: news, label: "News", path: "/news/"}
+  - {group: features, label: "Features", path: "/features/"}
+  - {group: screenshots, label: "Screenshots", path: "/screenshots/"}
 
 # Blog Config
 permalink: /news/:year/:month/:title.html

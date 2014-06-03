@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Features
-features: active
+group: features
 ---
 
 ## What is it?
