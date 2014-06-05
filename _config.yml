@@ -16,7 +16,7 @@ production_url: http://www.inbucket.org
 name: Inbucket
 navbar:
   - {group: news, label: "News", path: "/news/"}
-  - {group: features, label: "Features", path: "/features/"}
+  - {group: about, label: "About", path: "/about/"}
   - {group: screenshots, label: "Screenshots", path: "/screenshots/"}
 
 # Blog Config

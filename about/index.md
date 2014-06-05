@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Features
-group: features
+title: About Inbucket
+group: about
 ---
 
 ## What is it?
