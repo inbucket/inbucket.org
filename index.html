@@ -5,41 +5,73 @@ title: Inbucket
 
 <div class="jumbotron">
   <h1>Inbucket <small>disposable webmail</small></h1>
-
   <p>
     Inbucket is an email testing application; it will accept messages for any email
-    address and make them available to view via a web interface.  Similar to
-    <a href="http://mailinator.com" target="_blank">mailinator.com</a>, except
-    that you can run it on your own private network, or even your desktop.
+    address and make them available to view via a web interface.
   </p>
   <p>
-    <a class="btn btn-success btn-lg" role="button"
+    <a class="btn btn-primary btn-lg" role="button"
       href="{{BASE_PATH}}/about/">Learn more</a>
   </p>
 </div>
 
-{% if site.posts.size > 0 %}
-  {% assign post = site.posts[0] %}
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h2 class="panel-title">Latest News &ndash; {{post.date | date_to_string}}</h2>
+<div class="row">
+  <div class="col-sm-6">
+    <h2>What is it?</h2>
+    <p>
+      If you've ever used
+      <a href="http://mailinator.com" target="_blank">mailinator.com</a>, you
+      already have a good idea of what Inbucket does.  The benefit of Inbucket is
+      that it is an application instead of a hosted service; you may run it on
+      your own private network, or even your desktop.
+    </p>
+
+    <p>
+      Inbucket allows web developers, software engineers and system administrators to
+      quickly see the emailed output of their applications.  No per-account setup is
+      required! Mailboxes are created on the fly as mail is received for them, and
+      no password is required to browse the content of the mailboxes.
+    </p>
     </div>
-    <div class="panel-body">
+
+    <div class="col-sm-6">
+    <h2>
+      Project Status
+      <a href="https://travis-ci.org/jhillyerd/inbucket"><img
+        src="https://travis-ci.org/jhillyerd/inbucket.png?branch=master" alt="Build Status"/></a>
+    </h2>
+
+    <p>Inbucket is currently production quality: it is being used for real work.</p>
+
+    <p>
+      There is plenty more to do:
+      <ul>
+        <li>Refactor the SMTP daemon into a separate library</li>
+        <li>Integrate an embedded database to simplify storage</li>
+        <li>Build a more flexible web interface with bootstrap</li>
+        <li>Sanitize HTML before display</li>
+      </ul>
+    </p>
+
+    <p>Please check the <a
+      href="https://github.com/jhillyerd/inbucket/issues?state=open">issues list</a>
+    for more details.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-10">
+  {% if site.posts.size > 0 %}
+    {% assign post = site.posts[0] %}
+    <h2>Latest News</h2>
+    <div class="panel panel-default">
+      <div class="panel-body">
       <h3 class="blog-post-title"><a href="{{post.url}}">{{post.title}}</a></h3>
+      <div class="text-muted">{{post.date | date_to_string}}</div>
       {{post.content}}
     </div>
+    </div>
+    <p>&rarr; View <a href="{{BASE_PATH}}/news/">more news posts</a></p>
+  {% endif %}
   </div>
-{% endif %}
-
-<h2>
-  Development Status 
-  <a href="https://travis-ci.org/jhillyerd/inbucket"><img
-    src="https://travis-ci.org/jhillyerd/inbucket.png?branch=master" alt="Build Status"/></a>
-</h2>
-
-<p>Inbucket is currently production quality: it is being used for real work.</p>
-
-<p>Please check the <a
-  href="https://github.com/jhillyerd/inbucket/issues?state=open">Issues List</a>
-for more details.</p>
-
+</div>
