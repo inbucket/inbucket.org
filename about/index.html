@@ -1,0 +1,50 @@
+---
+layout: default
+title: Inbucket
+tagline: What is it?
+group: about
+---
+
+<div class="row">
+  <div class="col-sm-12">
+    <p>
+      Inbucket is an email testing application; it will accept messages for any email
+      address and make them available to view via a web interface.
+    </p>
+    <p>
+      Inbucket has built-in SMTP and POP3 servers which store incoming mail as flat
+      files on disk &ndash; no external SMTP or database daemons required.
+    </p>
+    <p>
+      Inbucket was written in <a href="http://golang.org/">Google Go</a> and is open
+      source software released under the MIT License.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h2>Mail features</h2>
+    <ul>
+      <li>Receive and store E/SMTP messages</li>
+      <li>Purge messages after a configurable amount of time</li>
+      <li>Enforce a cap on the number of messages per mailbox by deleting older messages</li>
+      <li>Optional load test mode; messages are never written to disk</li>
+      <li>Access mail via embedded POP3 server</li>
+    </ul>
+  </div>
+
+  <div class="col-sm-6">
+    <h2>Web-interface features</h2>
+    <ul>
+      <li>List messages in a mailbox</li>
+      <li>Displays text content of a particular message</li>
+      <li>Displays source of a message (headers + body text)</li>
+      <li>Displays HTML version of a message (in a new window)</li>
+      <li>List MIME attachments with buttons to display or download</li>
+      <li>Delete a message</li>
+      <li>RESTful: <a href="https://github.com/jhillyerd/inbucket/wiki/REST-API">
+        REST API Docs</a></li>
+    </ul>
+  </div>
+</div>
