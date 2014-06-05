@@ -1,20 +1,22 @@
 ---
-layout: default
+layout: base
 title: News
 group: news
-tagline: What's new with Inbucket
+tagline: What's old and new with Inbucket
 ---
-<div class="blog-header">
-  <p class="lead blog-descripton">
-    {{page.tagline}}
+<div class="page-header">
+  <h1>
+    News Archive
     {% if paginator.page > 1 %}
-      (page {{paginator.page}})
-    {% endif %}
-  </p>
+      <small>page {{paginator.page}}</small>
+    {% else %}
+      <small>{{page.tagline}}</small>
+    {% endif %} 
+  </h1>
 </div>
 
 <div class="row">
-  <div class="col-sm-10 blog-main">
+  <div class="col-sm-8 blog-main">
     <!-- This loops through the paginated posts -->
     {% for post in paginator.posts %}
       <div class="blog-post">
@@ -23,14 +25,30 @@ tagline: What's new with Inbucket
         {{post.content}}
       </div>
     {% endfor %}
+
+    <ul class="pager pager-primary">
+      {% unless paginator.previous_page %}
+        {% assign prev_disable = "disabled" %}
+      {% endunless %}
+      {% unless paginator.next_page %}
+        {% assign next_disable = "disabled" %}
+      {% endunless %}
+      <li class="previous {{prev_disable}}"><a href="page{{paginator.previous_page}}"
+        >&larr; Older</a></li>
+      <li class="next {{next_disable}}"><a href="page{{paginator.next_page}}"
+        >Newer &rarr;</a></li>
+    </ul>
+  </div>
+
+  <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+    <div class="sidebar-module">
+      <h4>All Posts</h4>
+      <ol class="list-unstyled">
+        {% for post in site.posts %}
+          <li><a href="{{post.url}}">{{post.title | truncate: 30}}</a></li>
+        {% endfor %}
+      </ol>
+    </div>
   </div>
   
-  <ul class="pager">
-    {% if paginator.previous_page %}
-      <li><a href="/page{{paginator.previous_page}}">Previous</a></li>
-    {% endif %}
-    {% if paginator.next_page %}
-      <li><a href="/page{{paginator.next_page}}">Next</a></li>
-    {% endif %}
-  </div>
 </div><!--/row-->
