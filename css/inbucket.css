@@ -23,20 +23,6 @@ body {
 }
 
 /* Blog */
-.blog-header {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-.blog-title {
-  margin-top: 30px;
-  margin-bottom: 0;
-  font-size: 60px;
-  font-weight: normal;
-}
-.blog-description {
-  font-size: 20px;
-  color: #999;
-}
 .blog-main {
   font-size: 16px;
   line-height: 1.5;
@@ -50,4 +36,12 @@ body {
 .blog-post-meta {
   margin-bottom: 20px;
   color: #999;
+}
+
+/* Screenshots */
+.thumbnail-content {
+  height: 190px;
+}
+.thumbnail img {
+  max-height: 175px;
 }

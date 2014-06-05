@@ -1,0 +1,18 @@
+{% comment %}
+  Generate a thumbnail column entry for the image specified in the
+  image parameter.  The caption will be pulled from the caption parameter.
+
+  Note:  BASE_PATH/images will be added to the image path.
+{% endcomment %}
+<div class="col-lg-3 col-md-4 col-sm-6">
+  <div class="thumbnail">
+    <div class="thumbnail-content">
+      <a href="{{BASE_PATH}}/images/{{include.image}}">
+        <img src="{{BASE_PATH}}/images/{{include.image}}"/>
+      </a>
+    </div>
+    <div class="caption text-center">
+      {{include.caption}}
+    </div>
+  </div>
+</div>
