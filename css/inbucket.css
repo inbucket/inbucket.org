@@ -37,6 +37,12 @@ body {
   margin-bottom: 20px;
   color: #999;
 }
+.blog-style img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #dddddd;
+  box-shadow: 7px 7px 5px #aaaaaa;
+}
 
 /* Screenshots */
 .thumbnail-content {
