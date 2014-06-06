@@ -20,11 +20,11 @@ from `inbucket` to that name to make upgrading/downgrading easier.
 Example, assuming you had a binary distribution tarball in root's home directory:
 
     cd /opt
-    tar xjvf ~/inbucket-YYYYMMDD-linux_amd64.tbz2
-    ln -s inbucket-YYYYMMDD-linux_amd64/ inbucket
+    tar xjvf ~/inbucket_X.Y_linux_amd64.tar.gz
+    ln -s inbucket_X.Y_linux_amd64/ inbucket
     cd inbucket/etc/ubuntu-12
 
-The steps below should be run as root from the etc/ubuntu-12 directory within your
+The steps below should be run as root from the `etc/ubuntu-12` directory within your
 Inbucket source or binary distribution.
 
 ### 3. Create Service Account
@@ -42,7 +42,7 @@ Create the directory where mail will be stored and make it writable by inbucket:
 
 ### 5. Setup Log Rotation
 Copy logrotate config into place, it should inherit most of the defaults setup in
-/etc/logrotate.conf
+`/etc/logrotate.conf`
 
     install -o root -g root -m 644 inbucket.logrotate /etc/logrotate.d/inbucket
 
@@ -56,19 +56,13 @@ Copy the sample config into place:
 
     install -o root -g root -m 644 ../unix-sample.conf /etc/opt/inbucket.conf
 
-Confirm the contents of /etc/opt/inbucket.conf are to your liking.
+Confirm the contents of `/etc/opt/inbucket.conf` are to your liking.
 
-### 8. Start & Verify Inbucket
-Start the daemon:
+### 8. Start Inbucket
+Start the daemon and check for errors
 
-    start inbucket
-
-Confirm it stayed running:
-
-    status inbucket
-
-Check inbucket's startup messages:
-
-    less /var/log/inbucket.log
+1. Start the daemon: <kbd>start inbucket</kbd>
+2. Confirm it stayed running: <kbd>status inbucket</kbd> 
+3. Check inbucket's startup messages: <kbd>less /var/log/inbucket.log</kbd>
 
 [1]: http://www.kernel.org/doc/man-pages/online/pages/man7/capabilities.7.html
