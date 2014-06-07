@@ -24,3 +24,23 @@ permalink: /news/:year/:month/:title.html
 paginate: 5
 paginate_path: "news/page:num"
 
+# Binaries
+binary_version: 1.0
+binary_base: https://dl.bintray.com/content/jhillyerd/golang
+binary_platforms:
+  - label: "Apple Mac"
+    name: darwin
+    architectures:
+      - {name: amd64, ext: zip}
+  - label: "FreeBSD"
+    name: freebsd
+    architectures:
+      - {name: amd64, ext: zip}
+  - label: "Linux"
+    name: linux
+    architectures:
+      - {name: amd64, ext: tar.gz}
+  - label: "MS Windows"
+    name: windows
+    architectures:
+      - {name: amd64, ext: zip}
