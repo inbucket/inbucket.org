@@ -16,4 +16,4 @@ fi
 # I know 0.0.0.0 would work, but this yields a clickable link in my terminal ;)
 myip="$(ip route get 8.8.8.8 | sed -e '/src/!d' -e 's/^.*src\s*//' -e 's/\s*$//')"
 
-bundle exec jekyll serve --watch --host "$myip"
+bundle exec jekyll serve --watch --host "$myip" --destination "$(mktemp -d)"
