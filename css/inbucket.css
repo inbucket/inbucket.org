@@ -60,3 +60,6 @@ h3 {
 .thumbnail img {
   max-height: 175px;
 }
+.ekko-lightbox-nav-overlay a {
+  color: #b2dbfb;
+}
