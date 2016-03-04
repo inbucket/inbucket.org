@@ -1,5 +1,6 @@
 exclude: ["Gemfile", "Gemfile.lock", "jekyll.sh"]
-pygments: true
+gems: [jekyll-paginate]
+highlighter: rouge
 markdown: kramdown
 
 # The production_url is only used when full-domain names are needed
