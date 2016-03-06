@@ -6,14 +6,16 @@ tagline: Inbucket downloads
 
 <div class="row">
   {% for plat in site.binary_platforms %}
-    {% capture prefix %}inbucket_{{site.binary_version}}_{{plat.name}}{% endcapture %}
     <div class="col-md-6 col-lg-6">
       <h3>{{plat.label}}</h3>
       <ul>
         {% for arch in plat.architectures %}
-        {% capture filename %}{{prefix}}_{{arch.name}}.{{arch.ext}}{% endcapture %}
-        <li><a onclick="return dlclick(this, '{{filename}}')"
-          href="{{site.binary_base}}/{{filename}}?direct">{{filename}}</a></li>
+          {% for ver in site.binary_versions %}
+            {% capture prefix %}inbucket_{{ver}}_{{plat.name}}{% endcapture %}
+            {% capture filename %}{{prefix}}_{{arch.name}}.{{arch.ext}}{% endcapture %}
+            <li><a onclick="return dlclick(this, '{{filename}}')"
+              href="{{site.binary_base}}/{{filename}}?direct">{{filename}}</a></li>
+          {% endfor %}
         {% endfor %}
       </ul>
     </div>
