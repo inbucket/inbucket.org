@@ -1,3 +1,4 @@
 /_site
-Gemfile.lock
-.goxc.local.json
+/Gemfile.lock
+/.goxc.local.json
+/.sass-cache

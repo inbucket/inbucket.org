@@ -2,9 +2,11 @@
 # jekyll.sh
 # description: Start ghpages version of jekyll. Opts: -i to install, -u to update
 
+DEST="/tmp/inbucket-site"
+
 cd "$(dirname $0)"
-if [ -d _site ]; then
-  rm -rf _site
+if [ -d "$DEST" ]; then
+  rm -rf "$DEST"
 fi
 
 if [ "$1" == "-i" ]; then
@@ -16,4 +18,4 @@ fi
 # I know 0.0.0.0 would work, but this yields a clickable link in my terminal ;)
 myip="$(ip route get 8.8.8.8 | sed -e '/src/!d' -e 's/^.*src\s*//' -e 's/\s*$//')"
 
-bundle exec jekyll serve --watch --host "$myip" --destination "$(mktemp -d)"
+bundle exec jekyll serve --watch --host "$myip" --destination "$DEST"
