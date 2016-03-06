@@ -6,8 +6,7 @@ description: How to install Inbucket from source
 
 ## Prerequisites
 
-You will need functioning [Go][1], [Git][2], and [Mercurial][3] installations
-for this to work.
+You will need functioning [Go] and [Git] installations for this to work.
 
 If you are running on Windows, you will need to perform the steps in this
 document from within Git Bash shell, otherwise Go will be unable to clone
@@ -53,6 +52,5 @@ interface will be available at [localhost:9000](http://localhost:9000/).
 Please see our [RedHat](redhat.html) and [Ubuntu](ubuntu.html) installation
 guides for information on configuring Inbucket to run as a daemon.
 
-[1]: http://golang.org/
-[2]: http://git-scm.com/
-[3]: http://mercurial.selenic.com/
+[Go]:  http://golang.org/
+[Git]: http://git-scm.com/
