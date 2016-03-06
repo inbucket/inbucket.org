@@ -10,7 +10,9 @@ description: "How to install Inbucket on Ubuntu Linux"
 You will need to have the `setcap` binary installed to allow Inbucket access to
 privileged ports (ie 25 for SMTP and 80 for HTTP).  You can install it with apt-get:
 
-    apt-get install libcap2-bin
+~~~ sh
+apt-get install libcap2-bin
+~~~
 
 ### 2. Copy Distribution
 Move or copy your Inbucket distribution to the `/opt` directory.  I recommend you
@@ -19,10 +21,12 @@ from `inbucket` to that name to make upgrading/downgrading easier.
 
 Example, assuming you had a binary distribution tarball in root's home directory:
 
-    cd /opt
-    tar xjvf ~/inbucket_X.Y_linux_amd64.tar.gz
-    ln -s inbucket_X.Y_linux_amd64/ inbucket
-    cd inbucket/etc/ubuntu-12
+~~~ sh
+cd /opt
+tar xjvf ~/inbucket_VER_linux_amd64.tar.gz
+ln -s inbucket_VER_linux_amd64/ inbucket
+cd inbucket/etc/ubuntu-12
+~~~
 
 The steps below should be run as root from the `etc/ubuntu-12` directory within your
 Inbucket source or binary distribution.
@@ -30,31 +34,41 @@ Inbucket source or binary distribution.
 ### 3. Create Service Account
 Create a service account for the daemon to run under.
 
-*NOTE:* there is a [setcap][1] command in the upstart config that allows inbucket to listen on
+*NOTE:* there is a [setcap] command in the upstart config that allows inbucket to listen on
 privileged ports (such as 25 and 80) without running as root.
 
-    useradd -r -m inbucket
+~~~ sh
+useradd -r -m inbucket
+~~~
 
 ### 4. Create Data Store
 Create the directory where mail will be stored and make it writable by inbucket:
 
-    install -o inbucket -g inbucket -m 775 -d /var/opt/inbucket
+~~~ sh
+install -o inbucket -g inbucket -m 775 -d /var/opt/inbucket
+~~~
 
 ### 5. Setup Log Rotation
 Copy logrotate config into place, it should inherit most of the defaults setup in
 `/etc/logrotate.conf`
 
-    install -o root -g root -m 644 inbucket.logrotate /etc/logrotate.d/inbucket
+~~~ sh
+install -o root -g root -m 644 inbucket.logrotate /etc/logrotate.d/inbucket
+~~~
 
 ### 6. Install Upstart Config
 Copy upstart config into place:
 
-    install -o root -g root -m 644 inbucket-upstart.conf /etc/init/inbucket
+~~~ sh
+install -o root -g root -m 644 inbucket-upstart.conf /etc/init/inbucket
+~~~
 
 ### 7. Configure Inbucket
 Copy the sample config into place:
 
-    install -o root -g root -m 644 ../unix-sample.conf /etc/opt/inbucket.conf
+~~~ sh
+install -o root -g root -m 644 ../unix-sample.conf /etc/opt/inbucket.conf
+~~~
 
 Confirm the contents of `/etc/opt/inbucket.conf` are to your liking.
 
@@ -65,4 +79,4 @@ Start the daemon and check for errors
 2. Confirm it stayed running: <kbd>status inbucket</kbd> 
 3. Check inbucket's startup messages: <kbd>less /var/log/inbucket.log</kbd>
 
-[1]: http://www.kernel.org/doc/man-pages/online/pages/man7/capabilities.7.html
+[setcap]: http://www.kernel.org/doc/man-pages/online/pages/man7/capabilities.7.html
