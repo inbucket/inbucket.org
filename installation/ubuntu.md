@@ -28,7 +28,7 @@ directory:
 
 ~~~ sh
 cd /opt
-tar xjvf ~/inbucket_VER_linux_amd64.tar.gz
+tar xzvf ~/inbucket_VER_linux_amd64.tar.gz
 ln -s inbucket_VER_linux_amd64/ inbucket
 cd inbucket/etc/ubuntu-12
 ~~~
@@ -92,7 +92,7 @@ Confirm the contents of `/etc/opt/inbucket.conf` are to your liking.
 Start the daemon and check for errors
 
 1. Start the daemon: <kbd>start inbucket</kbd>
-2. Confirm it stayed running: <kbd>status inbucket</kbd> 
+2. Confirm it stayed running: <kbd>status inbucket</kbd>
 3. Check inbucket's startup messages: <kbd>less /var/log/inbucket.log</kbd>
 
 [setcap]: http://www.kernel.org/doc/man-pages/online/pages/man7/capabilities.7.html
