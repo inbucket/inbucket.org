@@ -20,6 +20,7 @@ mkdir ~/gocode
 export GOPATH=~/gocode
 ~~~
 
+
 ## Building
 
 Grab the Inbucket source code and compile the daemon:
@@ -27,6 +28,7 @@ Grab the Inbucket source code and compile the daemon:
 ~~~ sh
 go get -v github.com/jhillyerd/inbucket
 ~~~
+
 
 ## Launching
 
@@ -46,6 +48,7 @@ $GOPATH/bin/inbucket etc/win-sample.conf
 
 By default the SMTP server will be listening on localhost port 2500 and the web
 interface will be available at [localhost:9000](http://localhost:9000/).
+
 
 ## Next Steps
 
