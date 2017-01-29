@@ -64,7 +64,7 @@ The commands above perform the following steps:
 
 1. Create `inbucket` user account
 2. Create work directory `/var/opt/inbucket`
-3. Create empty log file writiable by inbucket
+3. Create empty log file writable by inbucket
 4. Install log rotate configuration
 5. Install systemd service unit
 6. Install inbucket.conf into `/etc/opt`
