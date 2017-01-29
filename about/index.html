@@ -36,7 +36,8 @@ group: about
       <li>Receive and store E/SMTP messages</li>
       <li>Purge messages after a configurable amount of time</li>
       <li>Enforce a cap on the number of messages per mailbox by deleting older messages</li>
-      <li>Optional load test mode; messages are never written to disk</li>
+      <li>Optional load test mode; no messages are ever written to disk</li>
+      <li>Configurable load test domain; messages addressed to it are never written to disk</li>
       <li>Access mail via embedded POP3 server</li>
     </ul>
   </div>
@@ -50,6 +51,7 @@ group: about
       <li>Displays HTML version of a message (in a new window)</li>
       <li>List MIME attachments with buttons to display or download</li>
       <li>Delete a message</li>
+      <li>Monitor - a real time display of received messages</li>
       <li>RESTful: <a href="https://github.com/jhillyerd/inbucket/wiki/REST-API">
         REST API Docs</a></li>
     </ul>
