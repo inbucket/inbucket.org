@@ -16,8 +16,8 @@ If you don't have a `GOPATH` setup, create a directory for holding Go source
 code and export the `GOPATH` variable:
 
 ~~~ sh
-mkdir ~/gocode
-export GOPATH=~/gocode
+mkdir ~/go
+export GOPATH=~/go
 ~~~
 
 

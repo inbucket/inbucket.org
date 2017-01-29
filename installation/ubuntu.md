@@ -4,7 +4,10 @@ title: "Ubuntu Installation"
 description: "How to install Inbucket on Ubuntu Linux"
 ---
 
-## Install Inbucket on Ubuntu 12.04 or similar
+## Install Inbucket on Ubuntu 16.04 or similar
+
+The commands below should be run as root.
+
 
 ### 1. Dependencies
 
@@ -17,9 +20,9 @@ apt-get install libcap2-bin
 ~~~
 
 
-### 2. Copy Distribution
+### 2. Extract Distribution
 
-Move or copy your Inbucket distribution to the `/opt` directory.  I recommend
+Move or copy your Inbucket distribution to the `/opt` directory.  We recommend
 you keep the version number or build date in the name, and create a symbolic
 link from `inbucket` to that name to make upgrading/downgrading easier.
 
@@ -30,69 +33,60 @@ directory:
 cd /opt
 tar xzvf ~/inbucket_VER_linux_amd64.tar.gz
 ln -s inbucket_VER_linux_amd64/ inbucket
-cd inbucket/etc/ubuntu-12
 ~~~
 
-The steps below should be run as root from the `etc/ubuntu-12` directory within
-your Inbucket source or binary distribution.
 
+### 3. Set Capabilities
 
-### 3. Create Service Account
-
-Create a service account for the daemon to run under.
-
-*NOTE:* there is a [setcap] command in the upstart config that allows inbucket
-to listen on privileged ports (such as 25 and 80) without running as root.
+Allow Inbucket to use privileged ports via [capabilities]:
 
 ~~~ sh
+setcap 'cap_net_bind_service=+ep' /opt/inbucket/inbucket
+~~~
+
+
+### 4. Setup Directories & Configuration
+
+For convenience this block of text can be pasted directly into your terminal:
+
+~~~ sh
+cd /opt/inbucket/etc/ubuntu
 useradd -r -m inbucket
-~~~
-
-
-### 4. Create Data Store
-
-Create the directory where mail will be stored and make it writable by inbucket:
-
-~~~ sh
 install -o inbucket -g inbucket -m 775 -d /var/opt/inbucket
-~~~
-
-
-### 5. Setup Log Rotation
-
-Copy logrotate config into place, it should inherit most of the defaults setup
-in `/etc/logrotate.conf`
-
-~~~ sh
+touch /var/log/inbucket.log
+chown inbucket: /var/log/inbucket.log
 install -o root -g root -m 644 inbucket.logrotate /etc/logrotate.d/inbucket
-~~~
-
-
-### 6. Install Upstart Config
-
-Copy upstart config into place:
-
-~~~ sh
-install -o root -g root -m 644 inbucket-upstart.conf /etc/init/inbucket
-~~~
-
-
-### 7. Configure Inbucket
-Copy the sample config into place:
-
-~~~ sh
+install -o root -g root -m 644 inbucket.service /lib/systemd/system/inbucket.service
 install -o root -g root -m 644 ../unix-sample.conf /etc/opt/inbucket.conf
 ~~~
 
-Confirm the contents of `/etc/opt/inbucket.conf` are to your liking.
+The commands above perform the following steps:
+
+1. Create `inbucket` user account
+2. Create work directory `/var/opt/inbucket`
+3. Create empty log file writiable by inbucket
+4. Install log rotate configuration
+5. Install systemd service unit
+6. Install inbucket.conf into `/etc/opt`
 
 
-### 8. Start Inbucket
+### 5. Configure Inbucket
+
+Confirm the contents of `/etc/opt/inbucket.conf` are to your liking, paying
+special attention to the ports Inbucket is configured to serve SMTP, HTTP and
+POP3 on.
+
+Another common adjustment is the `retention.minutes` option in the `[datastore]`
+section; as shipped all messages are deleted four hours after receipt.
+
+
+### 6. Enable & Start Inbucket
 
 Start the daemon and check for errors
 
-1. Start the daemon: <kbd>start inbucket</kbd>
-2. Confirm it stayed running: <kbd>status inbucket</kbd>
+1. Have the daemon start at boot: <kbd>systemctl enable inbucket.service</kbd>
+1. Start the daemon: <kbd>systemctl start inbucket</kbd>
+2. Confirm it stayed running: <kbd>systemctl status inbucket</kbd>
 3. Check inbucket's startup messages: <kbd>less /var/log/inbucket.log</kbd>
 
-[setcap]: http://www.kernel.org/doc/man-pages/online/pages/man7/capabilities.7.html
+[capabilities]: http://www.kernel.org/doc/man-pages/online/pages/man7/capabilities.7.html
