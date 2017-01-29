@@ -4,89 +4,78 @@ title: RedHat Installation
 description: How to install Inbucket on RedHat Linux
 ---
 
-## Install Inbucket on RedHat EL 6 or one of its clones
+## Install Inbucket on RedHat EL 7 or one of its clones
 
-### 1. Copy Distribution
+The commands below should be run as root.
 
-Move or copy your Inbucket distribution to the `/opt` directory.  I recommend
+
+### 1. Extract Distribution
+
+Move or copy your Inbucket distribution to the `/opt` directory.  We recommend
 you keep the version number or build date in the name, and create a symbolic
 link from `inbucket` to that name to make upgrading/downgrading easier.
 
-Example assuming you had a binary distribution tarball in root's home directory:
+Example, assuming you had a binary distribution tarball in root's home
+directory:
 
 ~~~ sh
 cd /opt
 tar xzvf ~/inbucket_VER_linux_amd64.tar.gz
 ln -s inbucket_VER_linux_amd64/ inbucket
-cd inbucket/etc/redhat-el6
 ~~~
 
-The steps below should be run as root from the `etc/redhat-el6` directory within
-your Inbucket source or binary distribution.
 
+### 2. Set Capabilities
 
-### 2. Create Service Account
-
-Create a service account for the daemon to run under.
-
-*NOTE:* there is a [setcap] command in the init script that allows inbucket to
-listen on privileged ports (such as 25 and 80) without running as root.
+Allow Inbucket to use privileged ports via [capabilities]:
 
 ~~~ sh
+setcap 'cap_net_bind_service=+ep' /opt/inbucket/inbucket
+~~~
+
+
+### 3. Setup Directories & Configuration
+
+For convenience this block of text can be pasted directly into your terminal:
+
+~~~ sh
+cd /opt/inbucket/etc/redhat
 useradd -r -m inbucket
+install -o inbucket -g inbucket -m 775 -d /var/opt/inbucket
+touch /var/log/inbucket.log
+chown inbucket: /var/log/inbucket.log
+install -o root -g root -m 644 inbucket.logrotate /etc/logrotate.d/inbucket
+install -o root -g root -m 644 inbucket.service /lib/systemd/system/inbucket.service
+install -o root -g root -m 644 ../unix-sample.conf /etc/opt/inbucket.conf
 ~~~
 
+The commands above perform the following steps:
 
-### 3. Create Data Store
-
-Create the directory where mail will be stored and make it writable by inbucket:
-
-~~~ sh
-mkdir /var/opt/inbucket
-chown inbucket: /var/opt/inbucket
-~~~
-
-
-### 4. Setup Log Rotation
-
-Copy logrotate config into place, it should inherit most of the defaults setup
-in `/etc/logrotate.conf`
-
-~~~ sh
-cp inbucket.logrotate /etc/logrotate.d/inbucket
-chown root: /etc/logrotate.d/logrotate
-~~~
+1. Create `inbucket` user account
+2. Create work directory `/var/opt/inbucket`
+3. Create empty log file writiable by inbucket
+4. Install log rotate configuration
+5. Install systemd service unit
+6. Install inbucket.conf into `/etc/opt`
 
 
-### 5. Install Init Script
+### 4. Configure Inbucket
 
-Copy init script into place and activate:
+Confirm the contents of `/etc/opt/inbucket.conf` are to your liking, paying
+special attention to the ports Inbucket is configured to serve SMTP, HTTP and
+POP3 on.
 
-~~~ sh
-cp inbucket-init.sh /etc/init.d
-chown root: /etc/init.d/inbucket
-chmod 755 /etc/init.d/inbucket
-chkconfig --add inbucket
-~~~
+Another common adjustment is the `retention.minutes` option in the `[datastore]`
+section; as shipped all messages are deleted four hours after receipt.
 
 
-### 6. Configure Inbucket
-Copy the sample config into place:
-
-~~~ sh
-cp ../unix-sample.conf /etc/opt/inbucket.conf
-chown root: /etc/opt/inbucket.conf
-~~~
-
-Confirm the contents of `/etc/opt/inbucket.conf` are to your liking.
-
-
-### 7. Start Inbucket
+### 5. Enable & Start Inbucket
 
 Start the daemon and check for errors
 
-1. Start the daemon: <kbd>service inbucket start</kbd>
-2. Confirm it stayed running: <kbd>service inbucket status</kbd>
-3. Check inbucket's startup messages: <kbd>less /var/log/inbucket.log</kbd>
+1. Have the daemon start at boot: <kbd>systemctl enable inbucket.service</kbd>
+1. Start the daemon: <kbd>systemctl start inbucket</kbd>
+2. Confirm it stayed running: <kbd>systemctl status inbucket</kbd>
+3. Check inbucket's startup messages: <kbd>more /var/log/inbucket.log</kbd>
 
-[setcap]: http://www.kernel.org/doc/man-pages/online/pages/man7/capabilities.7.html
+[capabilities]: http://www.kernel.org/doc/man-pages/online/pages/man7/capabilities.7.html
