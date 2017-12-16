@@ -1,4 +1,4 @@
-exclude: ["Gemfile", "Gemfile.lock", "jekyll.sh"]
+exclude: ["Gemfile", "Gemfile.lock", "jekyll.sh", "vendor"]
 gems: [jekyll-paginate]
 highlighter: rouge
 markdown: kramdown

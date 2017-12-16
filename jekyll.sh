@@ -10,9 +10,9 @@ if [ -d "$DEST" ]; then
 fi
 
 if [ "$1" == "-i" ]; then
-  bundle install
+  bundle install --path vendor/bundle
 elif [ "$1" == "-u" ]; then
-  bundle update
+  bundle update 
 fi
 
 # I know 0.0.0.0 would work, but this yields a clickable link in my terminal ;)
