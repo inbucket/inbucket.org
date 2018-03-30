@@ -21,6 +21,19 @@
     <![endif]-->
     <link href="{{BASE_PATH}}/atom.xml" type="application/atom+xml" rel="alternate" title="Inbucket News Feed">
     <link href="{{BASE_PATH}}/images/favicon.png" rel="shortcut icon" type="image/png">
+    
+    <script language="javascript">
+      // Enforce SSL
+      (function (root) {
+        "use strict";
+        var h = root ? root.location.hostname : "",
+        p = root ? root.location.protocol : "";
+        if ("http:" === p && !(/^(localhost|127.0.0.1)/).test(h)) {
+          root.location.protocol = "https:";
+        }
+      }
+      ("undefined" !== typeof window ? window : this));
+    </script>
   </head>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
