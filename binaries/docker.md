@@ -13,7 +13,7 @@ Inbucket now includes a Dockerfile, which allows you to build a [Docker] image.
 I’ve setup an [Automated Build] for Inbucket, so you don’t even have to build
 your own image.  Try it out:
 
-    docker run -p 9000:10080 -p 2500:10025 jhillyerd/inbucket
+    docker run -d --name inbucket -p 9000:9000 -p 2500:2500 -p 1100:1100 jhillyerd/inbucket
 
 Then point your browser at [localhost:9000](http://localhost:9000/)
 
