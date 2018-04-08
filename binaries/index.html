@@ -9,8 +9,8 @@ tagline: Inbucket downloads
     <div class="col-md-6 col-lg-6">
       <h3>{{plat.label}}</h3>
       <ul>
-        {% for arch in plat.architectures %}
-          {% for ver in site.binary_versions %}
+        {% for ver in site.binary_versions %}
+          {% for arch in plat.architectures %}
             {% capture prefix %}inbucket_{{ver}}_{{plat.name}}{% endcapture %}
             {% capture filename %}{{prefix}}_{{arch.name}}.{{arch.ext}}{% endcapture %}
             <li><a onclick="return dlclick(this, '{{filename}}')"
