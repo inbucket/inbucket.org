@@ -26,24 +26,17 @@ export GOPATH=~/go
 Grab the Inbucket source code and compile the daemon:
 
 ~~~ sh
-go get -v github.com/jhillyerd/inbucket
+go get -v github.com/jhillyerd/inbucket/cmd/inbucket
 ~~~
 
 
 ## Launching
 
-Test launching the daemon on Linux & OS X:
+Test launching the daemon on Linux, OS X, and Windows:
 
 ~~~ sh
 cd $GOPATH/src/github.com/jhillyerd/inbucket
-$GOPATH/bin/inbucket etc/inbucket.conf
-~~~
-
-Test launching the daemon on Windows:
-
-~~~ sh
-cd $GOPATH/src/github.com/jhillyerd/inbucket
-$GOPATH/bin/inbucket etc/win-sample.conf
+$GOPATH/bin/inbucket
 ~~~
 
 By default the SMTP server will be listening on localhost port 2500 and the web
@@ -52,8 +45,13 @@ interface will be available at [localhost:9000](http://localhost:9000/).
 
 ## Next Steps
 
-Please see our [RedHat](redhat.html) and [Ubuntu](ubuntu.html) installation
-guides for information on configuring Inbucket to run as a daemon.
+Inbucket is configured via environment variables, please see [config.md] for
+more information.
 
-[Go]:  http://golang.org/
-[Git]: http://git-scm.com/
+If you would like to Inbucket run as a daemon, please use the [systemd unit]
+used by our Linux packages as a template.
+
+[Go]:           http://golang.org/
+[Git]:          http://git-scm.com/
+[config.md]:    https://github.com/jhillyerd/inbucket/blob/master/doc/config.md
+[systemd unit]: https://github.com/jhillyerd/inbucket/blob/master/etc/linux/inbucket.service
