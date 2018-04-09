@@ -340,25 +340,29 @@
       <p>Parameters specific to the storage type selected.  Formatted as a comma
       separated list of key:value pairs.</p>
 
-      <h4><tt>file</tt> type parameters</h4>
-      <ul>
-        <li>
-          <tt>path</tt>: Operating system specific path to the directory where mail should be
-          stored.
-        </li>
-      </ul>
-      <p>example: <tt>path=/tmp/inbucket</tt></p>
+      <div v-show="inbucket.storage.type == 'file'">
+        <h4><tt>file</tt> type parameters</h4>
+        <ul>
+          <li>
+            <tt>path</tt>: Operating system specific path to the directory where mail should be
+            stored.
+          </li>
+        </ul>
+        <p>example: <tt>path=/tmp/inbucket</tt></p>
+      </div>
 
-      <h4><tt>memory</tt> type parameters</h4>
-      <ul>
-        <li>
-          <tt>maxkb</tt>: Maximum size of the mail store in kilobytes.  The oldest messages in
-          the store will be deleted to enforce the limit.  In-memory storage has some
-          overhead, for now it is recommended to set this to half the total amount of
-          memory you are willing to allocate to Inbucket.
-        </li>
-      </ul>
-      <p>example: <tt>maxkb=10240</tt></p>
+      <div v-show="inbucket.storage.type == 'memory'">
+        <h4><tt>memory</tt> type parameters</h4>
+        <ul>
+          <li>
+            <tt>maxkb</tt>: Maximum size of the mail store in kilobytes.  The oldest messages in
+            the store will be deleted to enforce the limit.  In-memory storage has some
+            overhead, for now it is recommended to set this to half the total amount of
+            memory you are willing to allocate to Inbucket.
+          </li>
+        </ul>
+        <p>example: <tt>maxkb=10240</tt></p>
+      </div>
     </TextInput>
 
     <TextInput title="Retention Period"
@@ -500,7 +504,6 @@ tt {
 }
 
 #config-form {
-  font-family: Verdana, Geneva, sans-serif;
   margin: 20px auto;
   max-width: 800px;
 }

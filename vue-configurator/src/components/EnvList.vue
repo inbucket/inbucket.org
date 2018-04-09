@@ -161,9 +161,24 @@ export default {
           def: d.storage.mailboxMsgCap
         }
       ]
-      let displayVars = vars
+      // Filter redundant conditions.
+      let displayVars = vars.filter((v) => {
+        if (v.name === 'SMTP_ACCEPTDOMAINS' && c.smtp.defaultAccept) {
+          return false
+        }
+        if (v.name === 'SMTP_REJECTDOMAINS' && !c.smtp.defaultAccept) {
+          return false
+        }
+        if (v.name === 'SMTP_STOREDOMAINS' && c.smtp.defaultStore) {
+          return false
+        }
+        if (v.name === 'SMTP_DISCARDDOMAINS' && !c.smtp.defaultStore) {
+          return false
+        }
+        return true
+      })
       if (!this.showDefaults) {
-        displayVars = vars.filter((v) => { return v.value !== v.def })
+        displayVars = displayVars.filter((v) => { return v.value !== v.def })
       }
 
       switch (this.format) {
