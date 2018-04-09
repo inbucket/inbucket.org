@@ -171,6 +171,18 @@ export default {
           return displayVars.map((v) => {
             return 'export INBUCKET_' + v.name + '="' + v.value + '"'
           })
+        case 'compose':
+          return displayVars.map((v) => {
+            return 'INBUCKET_' + v.name + ': "' + v.value + '"'
+          })
+        case 'docker':
+          return displayVars.map((v) => {
+            return '-e INBUCKET_' + v.name + '="' + v.value + '" \\'
+          })
+        case 'systemd':
+          return displayVars.map((v) => {
+            return 'Environment=INBUCKET_' + v.name + '=' + v.value
+          })
         default:
           console.log('unknown format')
           return []

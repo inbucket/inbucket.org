@@ -395,8 +395,10 @@
     <div>
       <label>
         <select v-model="format">
-          <option value="bash">Bash</option>
-          <option value="hmm">Hmm</option>
+          <option value="bash">Bash Exports</option>
+          <option value="compose">Docker Compose</option>
+          <option value="docker">Docker Shell</option>
+          <option value="systemd">Systemd</option>
         </select>
         Output format
       </label>
@@ -507,5 +509,9 @@ tt {
   background-color: #e0efff;
   margin: 4px 0;
   padding: 10px;
+}
+
+input[type=text] {
+  width: 300px;
 }
 </style>
