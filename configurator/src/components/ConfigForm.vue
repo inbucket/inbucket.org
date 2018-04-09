@@ -10,28 +10,28 @@
         <div>
           <label>
             <input type="radio" value="error" v-model="inbucket.logLevel"/>
-            <sample>error</sample>:
+            <samp>error</samp>:
             output errors only.
           </label>
         </div>
         <div>
           <label>
             <input type="radio" value="warn" v-model="inbucket.logLevel"/>
-            <sample>warn</sample>:
+            <samp>warn</samp>:
             output errors and warnings.
           </label>
         </div>
         <div>
           <label>
             <input type="radio" value="info" v-model="inbucket.logLevel"/>
-            <sample>info</sample>:
+            <samp>info</samp>:
             output errors, warnings and information about what Inbucket is doing.
           </label>
         </div>
         <div>
           <label>
             <input type="radio" value="debug" v-model="inbucket.logLevel"/>
-            <sample>debug</sample>:
+            <samp>debug</samp>:
             output everything, including debugging information.
           </label>
         </div>
@@ -43,7 +43,7 @@
         <div>
           <label>
             <input type="radio" value="local" v-model="inbucket.mailboxNaming"/>
-            <sample>local</sample>: ensures the domain is removed, such that:
+            <samp>local</samp>: ensures the domain is removed, such that:
             <ul>
               <li><tt>james@inbucket.org</tt> is stored in <tt>james</tt></li>
               <li><tt>james+spam@inbucket.org</tt> is stored in <tt>james</tt></li>
@@ -53,7 +53,7 @@
         <div>
           <label>
             <input type="radio" value="full" v-model="inbucket.mailboxNaming"/>
-            <sample>full</sample>: retains the domain as part of the name, such that:
+            <samp>full</samp>: retains the domain as part of the name, such that:
             <ul>
               <li><tt>james@inbucket.org</tt> is stored in <tt>james@inbucket.org</tt></li>
               <li><tt>james+spam@inbucket.org</tt> is stored in <tt>james@inbucket.org</tt></li>
@@ -99,28 +99,30 @@
         <h3>Default Recipient Accept Policy</h3>
         <div>
           <label>
-            <input type="radio" value="true" v-model="inbucket.smtp.defaultAccept"/>
-            <sample>true</sample>:
+            <input type="radio" :value="true" v-model="inbucket.smtp.defaultAccept"/>
+            <samp>true</samp>:
             accept mail to any domain unless present in the reject domains list.
           </label>
         </div>
         <div>
           <label>
-            <input type="radio" value="false" v-model="inbucket.smtp.defaultAccept"/>
-            <sample>false</sample>:
+            <input type="radio" :value="false" v-model="inbucket.smtp.defaultAccept"/>
+            <samp>false</samp>:
             recipients will be rejected unless their domain is present in the accept domains list.
           </label>
         </div>
       </div>
 
-      <TextInput title="Accepted Recipient Domain List"
+      <TextInput v-show="!inbucket.smtp.defaultAccept"
+                 title="Accepted Recipient Domain List"
                  hint="comma separated domains"
                  v-model="inbucket.smtp.acceptDomains">
       List of domains to accept mail for when <em>Default Recipient Accept Policy</em> is false;
       has no effect when true.
       </TextInput>
 
-      <TextInput title="Rejected Recipient Domain List"
+      <TextInput v-show="inbucket.smtp.defaultAccept"
+                 title="Rejected Recipient Domain List"
                  hint="comma separated domains"
                  v-model="inbucket.smtp.rejectDomains">
       List of domains to reject mail for when <em>Default Recipient Accept Policy</em> is true;
@@ -131,29 +133,31 @@
         <h3>Default Recipient Store Policy</h3>
         <div>
           <label>
-            <input type="radio" value="true" v-model="inbucket.smtp.defaultStore"/>
-            <sample>true</sample>:
+            <input type="radio" :value="true" v-model="inbucket.smtp.defaultStore"/>
+            <samp>true</samp>:
             store mail sent to any domain unless present in the discard domains list.
           </label>
         </div>
         <div>
           <label>
-            <input type="radio" value="false" v-model="inbucket.smtp.defaultStore"/>
-            <sample>false</sample>:
+            <input type="radio" :value="false" v-model="inbucket.smtp.defaultStore"/>
+            <samp>false</samp>:
             messages will be discarded unless their domain is present in the store domains
             list.
           </label>
         </div>
       </div>
 
-      <TextInput title="Stored Recipient Domain List"
+      <TextInput v-show="!inbucket.smtp.defaultStore"
+                 title="Stored Recipient Domain List"
                  hint="comma separated domains"
                  v-model="inbucket.smtp.storeDomains">
       List of domains to store mail for when <em>Default Recipient Store Policy</em> is false;
       has no effect when true.
       </TextInput>
 
-      <TextInput title="Discarded Recipient Domain List"
+      <TextInput v-show="inbucket.smtp.defaultStore"
+                 title="Discarded Recipient Domain List"
                  hint="comma separated domains"
                  v-model="inbucket.smtp.discardDomains">
       Mail sent to these domains will not be stored by Inbucket.  This is helpful if
@@ -232,15 +236,15 @@
       <h3>Template Caching</h3>
       <div>
         <label>
-          <input type="radio" value="true" v-model="inbucket.web.templateCache"/>
-          <sample>true</sample>:
+          <input type="radio" :value="true" v-model="inbucket.web.templateCache"/>
+          <samp>true</samp>:
           cache HTML templates after first use.
         </label>
       </div>
       <div>
         <label>
-          <input type="radio" value="false" v-model="inbucket.web.templateCache"/>
-          <sample>false</sample>:
+          <input type="radio" :value="false" v-model="inbucket.web.templateCache"/>
+          <samp>false</samp>:
           always load HTML templates from disk, useful during Inbucket development.
         </label>
       </div>
@@ -268,16 +272,16 @@
       <h3>Monitor Visible</h3>
       <div>
         <label>
-          <input type="radio" value="true" v-model="inbucket.web.monitorVisible"/>
-          <sample>true</sample>:
+          <input type="radio" :value="true" v-model="inbucket.web.monitorVisible"/>
+          <samp>true</samp>:
           the monitor tab will be available, allowing users to observe all
           messages received by Inbucket as they arrive.
         </label>
       </div>
       <div>
         <label>
-          <input type="radio" value="false" v-model="inbucket.web.monitorVisible"/>
-          <sample>false</sample>:
+          <input type="radio" :value="false" v-model="inbucket.web.monitorVisible"/>
+          <samp>false</samp>:
           the monitor will be hidden.
         </label>
       </div>
@@ -311,7 +315,7 @@
       <div>
         <label>
           <input type="radio" value="file" v-model="inbucket.storage.type"/>
-          <sample>file</sample>:
+          <samp>file</samp>:
           stores messages as individual files in a nested directory structure
           based on the hash of the mailbox name.  Each mailbox also includes an index
           file to speed up enumeration of the mailbox contents.
@@ -321,7 +325,7 @@
       <div>
         <label>
           <input type="radio" value="memory" v-model="inbucket.storage.type"/>
-          <sample>memory</sample>:
+          <samp>memory</samp>:
           stores messages in RAM, they will be lost if Inbucket is restarted,
           or crashes, etc.
         </label>
@@ -387,19 +391,49 @@
 
     </Zippy>
 
-    <pre>{{ inbucket }}</pre>
+    <Zippy title="Environment Variables">
+    <div>
+      <label>
+        <select v-model="format">
+          <option value="bash">Bash</option>
+          <option value="hmm">Hmm</option>
+        </select>
+        Output format
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="checkbox" v-model="showDefaults"/>
+        Show variables that are set to their default value
+      </label>
+    </div>
+    <br/>
+    <EnvList
+       :config="inbucket"
+       :defaults="inbucketDefaults()"
+       :format="format"
+       :showDefaults="showDefaults"></EnvList>
+    </Zippy>
   </div>
 </template>
 
 <script>
+import EnvList from './EnvList'
 import TextInput from './TextInput'
 import Zippy from './Zippy'
 
 export default {
-  components: { TextInput, Zippy },
+  components: { EnvList, TextInput, Zippy },
   data () {
     return {
-      inbucket: {
+      format: 'bash',
+      showDefaults: false,
+      inbucket: this.inbucketDefaults()
+    }
+  },
+  methods: {
+    inbucketDefaults () {
+      return {
         logLevel: 'info',
         mailboxNaming: 'local',
         smtp: {
@@ -452,12 +486,13 @@ h3 {
   margin-top: 0;
 }
 
-sample {
+samp {
+  font-family: Consolas, Monaco, monospace;
   font-weight: bold;
 }
 
 tt {
-  background-color: #dfd;
+  background-color: #d0dfef;
   font-family: Consolas, Monaco, monospace;
   padding: 1px 5px;
 }
@@ -469,7 +504,8 @@ tt {
 }
 
 .config-item {
-  background-color: #f0f0f0;
+  background-color: #e0efff;
+  margin: 4px 0;
   padding: 10px;
 }
 </style>
