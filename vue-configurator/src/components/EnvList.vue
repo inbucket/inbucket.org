@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(v, i) in this.variables" :key="i">
+    <div class="env-line" v-for="(v, i) in this.variables" :key="i">
       {{ v }}
     </div>
   </div>
@@ -208,4 +208,7 @@ export default {
 </script>
 
 <style>
+.env-line {
+  font-family: Consolas, Monaco, monospace;
+}
 </style>
