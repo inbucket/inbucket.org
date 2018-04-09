@@ -1,4 +1,4 @@
-exclude: ["Gemfile", "Gemfile.lock", "jekyll.sh", "configurator", "vendor"]
+exclude: ["Gemfile", "Gemfile.lock", "jekyll.sh", "vue-configurator", "vendor"]
 plugins:
   - jekyll-paginate
 highlighter: rouge
