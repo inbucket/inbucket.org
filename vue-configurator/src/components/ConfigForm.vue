@@ -348,7 +348,7 @@
             stored.
           </li>
         </ul>
-        <p>example: <tt>path=/tmp/inbucket</tt></p>
+        <p>example: <tt>path:/tmp/inbucket</tt></p>
       </div>
 
       <div v-show="inbucket.storage.type == 'memory'">
@@ -361,7 +361,7 @@
             memory you are willing to allocate to Inbucket.
           </li>
         </ul>
-        <p>example: <tt>maxkb=10240</tt></p>
+        <p>example: <tt>maxkb:10240</tt></p>
       </div>
     </TextInput>
 
