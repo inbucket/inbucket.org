@@ -198,6 +198,10 @@ export default {
           return displayVars.map((v) => {
             return 'Environment=INBUCKET_' + v.name + '=' + v.value
           })
+        case 'kubernetes':
+          return displayVars.map((v) => {
+            return 'INBUCKET_' + v.name + ': "' + v.value + '"'
+          })
         default:
           console.log('unknown format')
           return []

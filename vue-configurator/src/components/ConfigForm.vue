@@ -403,6 +403,7 @@
           <option value="compose">Docker Compose</option>
           <option value="docker">Docker Shell</option>
           <option value="systemd">Systemd</option>
+          <option value="kubernetes">Kubernetes configMap</option>
         </select>
         Output format
       </label>
