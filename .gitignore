@@ -1,6 +1,5 @@
 /configurator/node_modules
 /_site
-/Gemfile.lock
 /vendor
 /.bundle
 /.goxc.local.json
