@@ -203,7 +203,8 @@ export default {
             return 'INBUCKET_' + v.name + ': "' + v.value + '"'
           })
         default:
-          console.log('unknown format')
+          // eslint-disable-next-line
+          console.log('unknown output format: ' + this.format)
           return []
       }
     }
