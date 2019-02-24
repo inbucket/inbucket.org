@@ -20,4 +20,4 @@ This release also includes changes to how Inbucket is configured, default ports
 in Docker, and the format of log output.
 
 [Full
-Changelog](https://github.com/jhillyerd/inbucket/blob/v2.0.0-rc1/CHANGELOG.md)
+Changelog](https://github.com/inbucket/inbucket/blob/v2.0.0-rc1/CHANGELOG.md)

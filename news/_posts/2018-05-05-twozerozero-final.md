@@ -13,4 +13,4 @@ Inbucket 2.0.0 is official.
   a configuration suited to your needs.
 
 Binaries and Linux packages available [on GitHub](
-https://github.com/jhillyerd/inbucket/releases/tag/v2.0.0)
+https://github.com/inbucket/inbucket/releases/tag/v2.0.0)

@@ -41,11 +41,13 @@ Confirm that Inbucket is listening on the default port:
 ### 4. Customize Inbucket Configuration
 
 Inbucket is configured via environment variables, please see [config.md] for
-more information.  You need to modify the `Environment=` statements in
+more information; or try our [Configurator].  You'll need to modify the
+`Environment=` statements in
 `/etc/systemd/system/multi-user.target.wants/inbucket.service` for the
 configuration changes to become permanent.
 
 If something goes wrong, you may refer to the default [systemd unit] on GitHub.
 
-[config.md]:    https://github.com/jhillyerd/inbucket/blob/master/doc/config.md
-[systemd unit]: https://github.com/jhillyerd/inbucket/blob/master/etc/linux/inbucket.service
+[Configurator]: /configurator/
+[config.md]:    https://github.com/inbucket/inbucket/blob/master/doc/config.md
+[systemd unit]: https://github.com/inbucket/inbucket/blob/master/etc/linux/inbucket.service

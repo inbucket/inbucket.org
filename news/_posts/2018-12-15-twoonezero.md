@@ -12,4 +12,4 @@ Inbucket 2.1.0 is official.
 - Render UTF-8 addresses correctly in both REST API and Web UI.
 
 Binaries and Linux packages available [on GitHub](
-https://github.com/jhillyerd/inbucket/releases/tag/v2.1.0)
+https://github.com/inbucket/inbucket/releases/tag/v2.1.0)

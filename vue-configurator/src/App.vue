@@ -5,7 +5,7 @@
     <br/>
     <p>
       Please open an
-      <a href="https://github.com/jhillyerd/inbucket.org/issues">issue on GitHub</a>
+      <a href="https://github.com/inbucket/inbucket.org/issues">issue on GitHub</a>
       to report a problem with this tool.
     </p>
   </div>

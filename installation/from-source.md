@@ -26,7 +26,7 @@ export GOPATH=~/go
 Grab the Inbucket source code and compile the daemon:
 
 ~~~ sh
-go get -v github.com/jhillyerd/inbucket/cmd/inbucket
+go get -v github.com/inbucket/inbucket/cmd/inbucket
 ~~~
 
 
@@ -35,7 +35,7 @@ go get -v github.com/jhillyerd/inbucket/cmd/inbucket
 Test launching the daemon on Linux, OS X, and Windows:
 
 ~~~ sh
-cd $GOPATH/src/github.com/jhillyerd/inbucket
+cd $GOPATH/src/github.com/inbucket/inbucket
 $GOPATH/bin/inbucket
 ~~~
 
@@ -46,12 +46,13 @@ interface will be available at [localhost:9000](http://localhost:9000/).
 ## Next Steps
 
 Inbucket is configured via environment variables, please see [config.md] for
-more information.
+more information; or try our [Configurator].
 
-If you would like to Inbucket run as a daemon, please use the [systemd unit]
+If you would like Inbucket to run as a daemon, please use the [systemd unit]
 used by our Linux packages as a template.
 
+[Configurator]: /configurator/
 [Go]:           http://golang.org/
 [Git]:          http://git-scm.com/
-[config.md]:    https://github.com/jhillyerd/inbucket/blob/master/doc/config.md
-[systemd unit]: https://github.com/jhillyerd/inbucket/blob/master/etc/linux/inbucket.service
+[config.md]:    https://github.com/inbucket/inbucket/blob/master/doc/config.md
+[systemd unit]: https://github.com/inbucket/inbucket/blob/master/etc/linux/inbucket.service
