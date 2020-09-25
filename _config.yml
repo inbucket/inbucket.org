@@ -27,7 +27,7 @@ paginate: 5
 paginate_path: "news/page:num"
 
 # Binaries
-binary_versions: ["2.1.0", "3.0.0-beta2"]
+binary_versions: ["2.1.0", "3.0.0-rc1"]
 binary_base: https://github.com/inbucket/inbucket/releases/download
 binary_platforms:
   - label: "Apple Mac"

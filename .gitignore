@@ -4,3 +4,5 @@
 /.bundle
 /.goxc.local.json
 /.sass-cache
+tags
+tags.*
