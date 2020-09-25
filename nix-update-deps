@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# based on https://nathan.gs/2019/04/19/using-jekyll-and-nix-to-blog/
+
+nix-shell -p bundler -p bundix --run 'bundler update; bundler lock; bundler package --no-install --path vendor; bundix; rm -rf vendor'
+
+echo "You can now run nix-shell"
