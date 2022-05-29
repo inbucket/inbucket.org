@@ -13,14 +13,20 @@
       (system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
+
+          serve = pkgs.writeShellScriptBin "serve" ''
+            ${pkgs.jekyll}/bin/jekyll serve --watch
+          '';
         in
         {
           devShell = pkgs.mkShell {
-            buildInputs = with pkgs; [ jekyll rubyPackages.jekyll-paginate ];
+            buildInputs = with pkgs; [
+              jekyll
+              rubyPackages.jekyll-paginate
+              serve
+            ];
 
             shellHook = ''
-              alias serve="${pkgs.jekyll}/bin/jekyll serve --watch"
-
               echo "Commands:"
               echo "  serve - runs jekyll w/ --watch"
             '';
