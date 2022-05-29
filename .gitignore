@@ -3,6 +3,7 @@
 /vendor
 /.bundle
 /.goxc.local.json
+/.jekyll-cache
 /.sass-cache
 tags
 tags.*
