@@ -19,6 +19,7 @@ name: Inbucket
 navbar:
   - {group: news, label: "News", path: "/news/"}
   - {group: about, label: "About", path: "/about/"}
+  - {group: community, label: "Community", path: "https://github.com/inbucket/inbucket/discussions"}
   - {group: screenshots, label: "Screenshots", path: "/screenshots/"}
 
 # Blog Config
