@@ -1,13 +1,14 @@
-Inbucket Website
-================
+# inbucket.org website
 
 GitHub pages (powered by [Jekyll]) source for http://www.inbucket.org/
 
-You will need Ruby and Bundler installed.  On Linux and OS X, you should then
-be able to install the gems and run Jekyll locally with:
+You will need Jekyll installed.
+
+Nix users may avoid installations, instead run:
 
 ```bash
-./jekyll.sh -i
+nix develop
+serve
 ```
 
 [Jekyll]: https://jekyllrb.com/
