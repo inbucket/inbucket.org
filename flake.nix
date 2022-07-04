@@ -15,14 +15,13 @@
           pkgs = nixpkgs.legacyPackages.${system};
 
           serve = pkgs.writeShellScriptBin "serve" ''
-            ${pkgs.jekyll}/bin/jekyll serve --watch
+            jekyll serve --watch
           '';
         in
         {
           devShell = pkgs.mkShell {
             buildInputs = with pkgs; [
-              jekyll
-              rubyPackages.jekyll-paginate
+              (jekyll.override { withOptionalDependencies = true; })
               serve
             ];
 
