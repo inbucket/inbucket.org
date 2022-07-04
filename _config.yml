@@ -26,27 +26,3 @@ navbar:
 permalink: /news/:year/:month/:title.html
 paginate: 5
 paginate_path: "news/page:num"
-
-# Binaries
-binary_versions: ["2.1.0", "3.0.0-rc1"]
-binary_base: https://github.com/inbucket/inbucket/releases/download
-binary_platforms:
-  - label: "Apple Mac"
-    name: darwin
-    architectures:
-      - {name: amd64, ext: tar.gz}
-  - label: "FreeBSD"
-    name: freebsd
-    architectures:
-      - {name: amd64, ext: tar.gz}
-  - label: "Linux"
-    name: linux
-    architectures:
-      - {name: amd64, ext: tar.gz}
-      - {name: amd64, ext: deb}
-      - {name: amd64, ext: rpm}
-  - label: "MS Windows"
-    name: windows
-    architectures:
-      - {name: amd64, ext: zip}
-
