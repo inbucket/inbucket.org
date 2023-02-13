@@ -126,11 +126,6 @@ export default {
           def: d.web.greetingFile
         },
         {
-          name: 'WEB_MAILBOXPROMPT',
-          value: c.web.mailboxPrompt,
-          def: d.web.mailboxPrompt
-        },
-        {
           name: 'WEB_MONITORVISIBLE',
           value: c.web.monitorVisible,
           def: d.web.monitorVisible

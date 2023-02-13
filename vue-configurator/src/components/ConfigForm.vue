@@ -275,16 +275,6 @@
     Inbucket installation, as well as link to REST documentation, etc.
     </TextInput>
 
-    <TextInput title="Mailbox Prompt"
-               hint="text string"
-               v-model="inbucket.web.mailboxPrompt">
-    <p>Text prompt displayed to the right of the mailbox name input field in the web
-    interface.  Can be used to nudge your users into typing just the mailbox name
-    instead of an entire email address.</p>
-
-    <p>Set to an empty string to hide the prompt.</p>
-    </TextInput>
-
     <div class="config-item">
       <h3>Monitor Visible</h3>
       <div>
@@ -510,7 +500,6 @@ export default {
           addr: '0.0.0.0:9000',
           uiDir: 'ui',
           greetingFile: 'ui/greeting.html',
-          mailboxPrompt: '@inbucket',
           monitorVisible: true,
           monitorHistory: 30,
           pprof: false
