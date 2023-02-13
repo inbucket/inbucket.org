@@ -81,6 +81,21 @@ export default {
           def: d.smtp.timeout
         },
         {
+          name: 'SMTP_TLSENABLED',
+          value: c.smtp.tlsEnabled,
+          def: d.smtp.tlsEnabled
+        },
+        {
+          name: 'SMTP_TLSPRIVKEY',
+          value: c.smtp.tlsPrivKey,
+          def: d.smtp.tlsPrivKey
+        },
+        {
+          name: 'SMTP_TLSCERT',
+          value: c.smtp.tlsCert,
+          def: d.smtp.tlsCert
+        },
+        {
           name: 'POP3_ADDR',
           value: c.pop3.addr,
           def: d.pop3.addr
@@ -173,6 +188,12 @@ export default {
           return false
         }
         if (v.name === 'SMTP_DISCARDDOMAINS' && !c.smtp.defaultStore) {
+          return false
+        }
+        if (v.name === 'SMTP_TLSPRIVKEY' && !c.smtp.tlsEnabled) {
+          return false
+        }
+        if (v.name === 'SMTP_TLSCERT' && !c.smtp.tlsEnabled) {
           return false
         }
         return true

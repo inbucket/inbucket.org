@@ -184,6 +184,38 @@
       seconds.  Consider reducing this *significantly* if you plan to expose Inbucket
       to the public internet.
       </TextInput>
+
+      <div class="config-item">
+        <h3>TLS Encryption Availability</h3>
+        <div>
+          <label>
+            <input type="radio" :value="true" v-model="inbucket.smtp.tlsEnabled"/>
+            <samp>true</samp>:
+            SMTP STARTTLS will be availble for opportunistic TLS.
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" :value="false" v-model="inbucket.smtp.tlsEnabled"/>
+            <samp>false</samp>:
+            TLS encryption will be disabled.
+          </label>
+        </div>
+      </div>
+
+      <TextInput title="TLS Private Key File"
+                 v-show="inbucket.smtp.tlsEnabled"
+                 hint="filename or path to private key"
+                 v-model="inbucket.smtp.tlsPrivKey">
+      Specify the x509 Private key file to be used for TLS negotiation.
+      </TextInput>
+
+      <TextInput title="TLS Public Certificate File"
+                 v-show="inbucket.smtp.tlsEnabled"
+                 hint="filename or path to the certificate key"
+                 v-model="inbucket.smtp.tlsCert">
+      Specify the x509 Certificate file to be used for TLS negotiation.
+      </TextInput>
     </Zippy>
 
     <Zippy title="POP3">
@@ -465,7 +497,10 @@ export default {
           defaultStore: true,
           storeDomains: '',
           discardDomains: '',
-          timeout: '300s'
+          timeout: '300s',
+          tlsEnabled: false,
+          tlsPrivKey: '',
+          tlsCert: ''
         },
         pop3: {
           addr: '0.0.0.0:1100',
