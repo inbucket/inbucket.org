@@ -60,6 +60,17 @@
             </ul>
           </label>
         </div>
+        <div>
+          <label>
+            <input type="radio" value="domain" v-model="inbucket.mailboxNaming"/>
+            <samp>domain</samp>: ensures the local-part is removed, such that:
+            <ul>
+              <li><tt>james@inbucket.org</tt> is stored in <tt>inbucket.org</tt></li>
+              <li><tt>matt@inbucket.org</tt> is stored in <tt>inbucket.org</tt></li>
+              <li><tt>matt@noinbucket.com</tt> is stored in <tt>notinbucket.com</tt></li>
+            </ul>
+          </label>
+        </div>
       </div>
     </Zippy>
 
