@@ -303,14 +303,6 @@
     <p>Set to an empty string to hide the prompt.</p>
     </TextInput>
 
-    <TextInput title="Cookie Authentication Key"
-               hint="text string"
-               v-model="inbucket.web.cookieAuthKey">
-    Inbucket stores session information in an encrypted browser cookie.  Unless
-    specified, Inbucket generates a random key at startup.  The only notable data
-    stored in a user session is the list of recently accessed mailboxes.
-    </TextInput>
-
     <div class="config-item">
       <h3>Monitor Visible</h3>
       <div>
@@ -538,7 +530,6 @@ export default {
           greetingFile: 'ui/greeting.html',
           templateCache: true,
           mailboxPrompt: '@inbucket',
-          cookieAuthKey: '',
           monitorVisible: true,
           monitorHistory: 30,
           pprof: false

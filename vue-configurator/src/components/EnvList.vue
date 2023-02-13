@@ -136,11 +136,6 @@ export default {
           def: d.web.mailboxPrompt
         },
         {
-          name: 'WEB_COOKIEAUTHKEY',
-          value: c.web.cookieAuthKey,
-          def: d.web.cookieAuthKey
-        },
-        {
           name: 'WEB_MONITORVISIBLE',
           value: c.web.monitorVisible,
           def: d.web.monitorVisible
