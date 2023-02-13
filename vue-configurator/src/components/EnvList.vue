@@ -126,11 +126,6 @@ export default {
           def: d.web.greetingFile
         },
         {
-          name: 'WEB_TEMPLATECACHE',
-          value: c.web.templateCache,
-          def: d.web.templateCache
-        },
-        {
           name: 'WEB_MAILBOXPROMPT',
           value: c.web.mailboxPrompt,
           def: d.web.mailboxPrompt

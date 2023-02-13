@@ -275,24 +275,6 @@
     Inbucket installation, as well as link to REST documentation, etc.
     </TextInput>
 
-    <div class="config-item">
-      <h3>Template Caching</h3>
-      <div>
-        <label>
-          <input type="radio" :value="true" v-model="inbucket.web.templateCache"/>
-          <samp>true</samp>:
-          cache HTML templates after first use.
-        </label>
-      </div>
-      <div>
-        <label>
-          <input type="radio" :value="false" v-model="inbucket.web.templateCache"/>
-          <samp>false</samp>:
-          always load HTML templates from disk, useful during Inbucket development.
-        </label>
-      </div>
-    </div>
-
     <TextInput title="Mailbox Prompt"
                hint="text string"
                v-model="inbucket.web.mailboxPrompt">
@@ -528,7 +510,6 @@ export default {
           addr: '0.0.0.0:9000',
           uiDir: 'ui',
           greetingFile: 'ui/greeting.html',
-          templateCache: true,
           mailboxPrompt: '@inbucket',
           monitorVisible: true,
           monitorHistory: 30,
