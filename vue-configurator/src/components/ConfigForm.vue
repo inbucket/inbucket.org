@@ -498,7 +498,7 @@ export default {
         },
         web: {
           addr: '0.0.0.0:9000',
-          uiDir: 'ui',
+          uiDir: 'ui/dist',
           greetingFile: 'ui/greeting.html',
           monitorVisible: true,
           monitorHistory: 30,
