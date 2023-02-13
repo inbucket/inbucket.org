@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Inbucket Configurator (Beta)</h1>
+    <h1>Inbucket Configurator</h1>
     <ConfigForm/>
     <br/>
     <p>
