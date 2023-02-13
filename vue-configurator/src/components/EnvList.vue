@@ -151,6 +151,11 @@ export default {
           def: d.web.monitorHistory
         },
         {
+          name: 'WEB_PPROF',
+          value: c.web.pprof,
+          def: d.web.pprof
+        },
+        {
           name: 'STORAGE_TYPE',
           value: c.storage.type,
           def: d.storage.type

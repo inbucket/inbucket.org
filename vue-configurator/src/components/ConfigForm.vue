@@ -348,6 +348,31 @@
     them.</p>
     </TextInput>
 
+    <div class="config-item">
+      <h3>Expose Profiling Data</h3>
+      <p>
+        If enabled, Go's pprof package will be installed to the <tt>/debug/pprof</tt> URI.  This
+        exposes detailed memory and CPU performance data for debugging Inbucket.  If you enable this
+        option, please make sure it is not exposed to the public internet, as its use can
+        significantly impact performance.
+      </p>
+
+      <div>
+        <label>
+          <input type="radio" :value="true" v-model="inbucket.web.pprof"/>
+          <samp>true</samp>:
+          Enables Go pprof debug URI.
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="radio" :value="false" v-model="inbucket.web.pprof"/>
+          <samp>false</samp>:
+          Disables pprof.
+        </label>
+      </div>
+    </div>
+
     </Zippy>
 
     <Zippy title="Storage">
@@ -515,7 +540,8 @@ export default {
           mailboxPrompt: '@inbucket',
           cookieAuthKey: '',
           monitorVisible: true,
-          monitorHistory: 30
+          monitorHistory: 30,
+          pprof: false
         },
         storage: {
           type: 'memory',
