@@ -60,6 +60,17 @@
             </ul>
           </label>
         </div>
+        <div>
+          <label>
+            <input type="radio" value="domain" v-model="inbucket.mailboxNaming"/>
+            <samp>domain</samp>: ensures the local-part is removed, such that:
+            <ul>
+              <li><tt>james@inbucket.org</tt> is stored in <tt>inbucket.org</tt></li>
+              <li><tt>matt@inbucket.org</tt> is stored in <tt>inbucket.org</tt></li>
+              <li><tt>matt@noinbucket.com</tt> is stored in <tt>notinbucket.com</tt></li>
+            </ul>
+          </label>
+        </div>
       </div>
     </Zippy>
 
@@ -173,6 +184,38 @@
       seconds.  Consider reducing this *significantly* if you plan to expose Inbucket
       to the public internet.
       </TextInput>
+
+      <div class="config-item">
+        <h3>TLS Encryption Availability</h3>
+        <div>
+          <label>
+            <input type="radio" :value="true" v-model="inbucket.smtp.tlsEnabled"/>
+            <samp>true</samp>:
+            SMTP STARTTLS will be availble for opportunistic TLS.
+          </label>
+        </div>
+        <div>
+          <label>
+            <input type="radio" :value="false" v-model="inbucket.smtp.tlsEnabled"/>
+            <samp>false</samp>:
+            TLS encryption will be disabled.
+          </label>
+        </div>
+      </div>
+
+      <TextInput title="TLS Private Key File"
+                 v-show="inbucket.smtp.tlsEnabled"
+                 hint="filename or path to private key"
+                 v-model="inbucket.smtp.tlsPrivKey">
+      Specify the x509 Private key file to be used for TLS negotiation.
+      </TextInput>
+
+      <TextInput title="TLS Public Certificate File"
+                 v-show="inbucket.smtp.tlsEnabled"
+                 hint="filename or path to the certificate key"
+                 v-model="inbucket.smtp.tlsCert">
+      Specify the x509 Certificate file to be used for TLS negotiation.
+      </TextInput>
     </Zippy>
 
     <Zippy title="POP3">
@@ -213,6 +256,23 @@
     Inbucket to listen on all available network interfaces.
     </TextInput>
 
+    <TextInput title="Base Path"
+               hint="empty or URI prefix"
+               v-model="inbucket.web.basePath">
+    <p>Base path prefix for UI and API URLs.  This option is used when you wish to
+    root all Inbucket URLs to a specific path when placing it behind a
+    reverse-proxy.</p>
+
+    <p>
+      For example, setting the base path to <tt>prefix</tt> will move:
+      <ul>
+        <li>the Inbucket status page from <tt>/status</tt> to <tt>/prefix/status</tt>,</li>
+        <li>Bob's mailbox from <tt>/m/bob</tt> to <tt>/prefix/m/bob</tt>, and</li>
+        <li>the REST API from <tt>/api/v1/*</tt> to <tt>/prefix/api/v1/*</tt>.</li>
+      </ul>
+    </p>
+    </TextInput>
+
     <TextInput title="UI Directory"
                hint="OS directory path"
                v-model="inbucket.web.uiDir">
@@ -230,42 +290,6 @@
     The content of the greeting file will be injected into the front page of
     Inbucket.  It can be used to instruct users on how to send mail into your
     Inbucket installation, as well as link to REST documentation, etc.
-    </TextInput>
-
-    <div class="config-item">
-      <h3>Template Caching</h3>
-      <div>
-        <label>
-          <input type="radio" :value="true" v-model="inbucket.web.templateCache"/>
-          <samp>true</samp>:
-          cache HTML templates after first use.
-        </label>
-      </div>
-      <div>
-        <label>
-          <input type="radio" :value="false" v-model="inbucket.web.templateCache"/>
-          <samp>false</samp>:
-          always load HTML templates from disk, useful during Inbucket development.
-        </label>
-      </div>
-    </div>
-
-    <TextInput title="Mailbox Prompt"
-               hint="text string"
-               v-model="inbucket.web.mailboxPrompt">
-    <p>Text prompt displayed to the right of the mailbox name input field in the web
-    interface.  Can be used to nudge your users into typing just the mailbox name
-    instead of an entire email address.</p>
-
-    <p>Set to an empty string to hide the prompt.</p>
-    </TextInput>
-
-    <TextInput title="Cookie Authentication Key"
-               hint="text string"
-               v-model="inbucket.web.cookieAuthKey">
-    Inbucket stores session information in an encrypted browser cookie.  Unless
-    specified, Inbucket generates a random key at startup.  The only notable data
-    stored in a user session is the list of recently accessed mailboxes.
     </TextInput>
 
     <div class="config-item">
@@ -304,6 +328,31 @@
     notifications in the web interface when I finally get around to implementing
     them.</p>
     </TextInput>
+
+    <div class="config-item">
+      <h3>Expose Profiling Data</h3>
+      <p>
+        If enabled, Go's pprof package will be installed to the <tt>/debug/pprof</tt> URI.  This
+        exposes detailed memory and CPU performance data for debugging Inbucket.  If you enable this
+        option, please make sure it is not exposed to the public internet, as its use can
+        significantly impact performance.
+      </p>
+
+      <div>
+        <label>
+          <input type="radio" :value="true" v-model="inbucket.web.pprof"/>
+          <samp>true</samp>:
+          Enables Go pprof debug URI.
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="radio" :value="false" v-model="inbucket.web.pprof"/>
+          <samp>false</samp>:
+          Disables pprof.
+        </label>
+      </div>
+    </div>
 
     </Zippy>
 
@@ -454,7 +503,10 @@ export default {
           defaultStore: true,
           storeDomains: '',
           discardDomains: '',
-          timeout: '300s'
+          timeout: '300s',
+          tlsEnabled: false,
+          tlsPrivKey: '',
+          tlsCert: ''
         },
         pop3: {
           addr: '0.0.0.0:1100',
@@ -463,13 +515,12 @@ export default {
         },
         web: {
           addr: '0.0.0.0:9000',
-          uiDir: 'ui',
+          basePath: '',
+          uiDir: 'ui/dist',
           greetingFile: 'ui/greeting.html',
-          templateCache: true,
-          mailboxPrompt: '@inbucket',
-          cookieAuthKey: '',
           monitorVisible: true,
-          monitorHistory: 30
+          monitorHistory: 30,
+          pprof: false
         },
         storage: {
           type: 'memory',

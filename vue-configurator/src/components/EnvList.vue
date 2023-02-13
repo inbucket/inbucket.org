@@ -81,6 +81,21 @@ export default {
           def: d.smtp.timeout
         },
         {
+          name: 'SMTP_TLSENABLED',
+          value: c.smtp.tlsEnabled,
+          def: d.smtp.tlsEnabled
+        },
+        {
+          name: 'SMTP_TLSPRIVKEY',
+          value: c.smtp.tlsPrivKey,
+          def: d.smtp.tlsPrivKey
+        },
+        {
+          name: 'SMTP_TLSCERT',
+          value: c.smtp.tlsCert,
+          def: d.smtp.tlsCert
+        },
+        {
           name: 'POP3_ADDR',
           value: c.pop3.addr,
           def: d.pop3.addr
@@ -94,6 +109,11 @@ export default {
           name: 'POP3_TIMEOUT',
           value: c.pop3.timeout,
           def: d.pop3.timeout
+        },
+        {
+          name: 'WEB_BASEPATH',
+          value: c.web.basePath,
+          def: d.web.basePath
         },
         {
           name: 'WEB_ADDR',
@@ -111,21 +131,6 @@ export default {
           def: d.web.greetingFile
         },
         {
-          name: 'WEB_TEMPLATECACHE',
-          value: c.web.templateCache,
-          def: d.web.templateCache
-        },
-        {
-          name: 'WEB_MAILBOXPROMPT',
-          value: c.web.mailboxPrompt,
-          def: d.web.mailboxPrompt
-        },
-        {
-          name: 'WEB_COOKIEAUTHKEY',
-          value: c.web.cookieAuthKey,
-          def: d.web.cookieAuthKey
-        },
-        {
           name: 'WEB_MONITORVISIBLE',
           value: c.web.monitorVisible,
           def: d.web.monitorVisible
@@ -134,6 +139,11 @@ export default {
           name: 'WEB_MONITORHISTORY',
           value: c.web.monitorHistory,
           def: d.web.monitorHistory
+        },
+        {
+          name: 'WEB_PPROF',
+          value: c.web.pprof,
+          def: d.web.pprof
         },
         {
           name: 'STORAGE_TYPE',
@@ -173,6 +183,12 @@ export default {
           return false
         }
         if (v.name === 'SMTP_DISCARDDOMAINS' && !c.smtp.defaultStore) {
+          return false
+        }
+        if (v.name === 'SMTP_TLSPRIVKEY' && !c.smtp.tlsEnabled) {
+          return false
+        }
+        if (v.name === 'SMTP_TLSCERT' && !c.smtp.tlsEnabled) {
           return false
         }
         return true
