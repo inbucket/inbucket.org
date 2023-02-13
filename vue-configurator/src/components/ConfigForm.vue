@@ -256,6 +256,23 @@
     Inbucket to listen on all available network interfaces.
     </TextInput>
 
+    <TextInput title="Base Path"
+               hint="empty or URI prefix"
+               v-model="inbucket.web.basePath">
+    <p>Base path prefix for UI and API URLs.  This option is used when you wish to
+    root all Inbucket URLs to a specific path when placing it behind a
+    reverse-proxy.</p>
+
+    <p>
+      For example, setting the base path to <tt>prefix</tt> will move:
+      <ul>
+        <li>the Inbucket status page from <tt>/status</tt> to <tt>/prefix/status</tt>,</li>
+        <li>Bob's mailbox from <tt>/m/bob</tt> to <tt>/prefix/m/bob</tt>, and</li>
+        <li>the REST API from <tt>/api/v1/*</tt> to <tt>/prefix/api/v1/*</tt>.</li>
+      </ul>
+    </p>
+    </TextInput>
+
     <TextInput title="UI Directory"
                hint="OS directory path"
                v-model="inbucket.web.uiDir">
@@ -498,6 +515,7 @@ export default {
         },
         web: {
           addr: '0.0.0.0:9000',
+          basePath: '',
           uiDir: 'ui/dist',
           greetingFile: 'ui/greeting.html',
           monitorVisible: true,

@@ -111,6 +111,11 @@ export default {
           def: d.pop3.timeout
         },
         {
+          name: 'WEB_BASEPATH',
+          value: c.web.basePath,
+          def: d.web.basePath
+        },
+        {
           name: 'WEB_ADDR',
           value: c.web.addr,
           def: d.web.addr
