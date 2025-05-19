@@ -1,14 +1,16 @@
-name: test
+name: lustre-configurator
 
 on:
   push:
     branches:
-      - master
       - main
   pull_request:
 
 jobs:
-  test:
+  build:
+    defaults:
+      run:
+        working-directory: lustre-configurator
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,7 +19,5 @@ jobs:
           otp-version: "27.1.2"
           gleam-version: "1.10.0"
           rebar3-version: "3"
-          # elixir-version: "1"
-      - run: gleam deps download
-      - run: gleam test
+      - run: gleam build
       - run: gleam format --check src test

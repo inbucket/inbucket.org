@@ -6,28 +6,35 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem
-      (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
+  outputs =
+    { nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
 
-          serve = pkgs.writeShellScriptBin "serve" ''
-            jekyll serve --watch
+        serve = pkgs.writeShellScriptBin "serve" ''
+          jekyll serve --watch
+        '';
+      in
+      {
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            (jekyll.override { withOptionalDependencies = true; })
+            serve
+
+            # Gleam
+            erlang_27
+            gleam
+            inotify-tools
+            rebar3
+          ];
+
+          shellHook = ''
+            echo "Commands:"
+            echo "  serve - runs jekyll w/ --watch"
           '';
-        in
-        {
-          devShell = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              (jekyll.override { withOptionalDependencies = true; })
-              serve
-            ];
-
-            shellHook = ''
-              echo "Commands:"
-              echo "  serve - runs jekyll w/ --watch"
-            '';
-          };
-        }
-      );
+        };
+      }
+    );
 }
