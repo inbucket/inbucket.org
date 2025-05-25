@@ -1,4 +1,4 @@
-exclude: ["Gemfile", "Gemfile.lock", "jekyll.sh", "lustre-configurator", "vendor"]
+exclude: ["flake.nix", "flake.lock", "jekyll.sh", "lustre-configurator", "vendor"]
 plugins:
   - jekyll-paginate
 highlighter: rouge
