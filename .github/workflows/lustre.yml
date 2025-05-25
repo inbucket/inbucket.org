@@ -1,0 +1,23 @@
+name: lustre-configurator
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    defaults:
+      run:
+        working-directory: lustre-configurator
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: "27.1.2"
+          gleam-version: "1.10.0"
+          rebar3-version: "3"
+      - run: gleam build
+      - run: gleam format --check src test
