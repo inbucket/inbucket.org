@@ -74,8 +74,8 @@ fn init(_flags) -> Model {
     |> add("smtp.discardDomains", "INBUCKET_SMTP_DISCARDDOMAINS", "")
     |> add("smtp.timeout", "INBUCKET_SMTP_TIMEOUT", "300s")
     |> add("smtp.tlsEnabled", "INBUCKET_SMTP_TLSENABLED", "false")
-    |> add("smtp.tlsPrivKey", "INBUCKET_SMTP_TLSPRIVKEY", "")
-    |> add("smtp.tlsCert", "INBUCKET_SMTP_TLSCERT", "")
+    |> add("smtp.tlsPrivKey", "INBUCKET_SMTP_TLSPRIVKEY", "cert.key")
+    |> add("smtp.tlsCert", "INBUCKET_SMTP_TLSCERT", "cert.crt")
     |> add("pop3.addr", "INBUCKET_POP3_ADDR", "0.0.0.0:1100")
     |> add("pop3.domain", "INBUCKET_POP3_DOMAIN", "inbucket")
     |> add("pop3.timeout", "INBUCKET_POP3_TIMEOUT", "600s")
@@ -514,19 +514,18 @@ fn view(model: Model) {
           [
             html.p([], [
               text(
-                "This directory contains the templates and static assets for the web user
-    interface.  You will need to change this if the current working directory
-    doesn't contain the ",
+                "This directory contains the static assets for the web user
+                interface.  This value can vary significantly with different
+                installation methods, for example:",
               ),
-              code("ui"),
-              text(" directory at startup."),
             ]),
-            html.p([], [
-              text("Inbucket will load templates from the "),
-              code("templates"),
-              text(" sub-directory, and serve static assets from the "),
-              code("static"),
-              text(" sub-directory."),
+            html.ul([], [
+              html.li([], [code("ui"), text(" for Docker")]),
+              html.li([], [
+                code("/usr/share/inbucket/ui"),
+                text(" for RPM and debian packages"),
+              ]),
+              html.li([], [code("ui/dist"), text(" when built from source")]),
             ]),
           ],
         ),
