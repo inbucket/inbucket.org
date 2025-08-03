@@ -14,6 +14,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
 
         scripts.serve = pkgs.writeShellScriptBin "serve" ''
+          cd "$(git rev-parse --show-toplevel)"
           jekyll serve --watch
         '';
 
