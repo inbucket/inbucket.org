@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # Workflow action versions (.github/workflows/lustre.yml)
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: "ci"
+
+  # Note: Dependabot does not support the Gleam ecosystem, so
+  # lustre-configurator/gleam.toml and manifest.toml are not covered.
+  # Renovate has a gleam manager if automated updates are wanted later.
