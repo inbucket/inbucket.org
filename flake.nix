@@ -15,7 +15,7 @@
 
         scripts.serve = pkgs.writeShellScriptBin "serve" ''
           cd "$(git rev-parse --show-toplevel)"
-          jekyll serve --watch
+          jekyll serve --host 0.0.0.0 --watch
         '';
 
         # TODO Replace with Jekyll + Lustre GHA
@@ -30,16 +30,10 @@
 
           pushd $src
           gleam clean
-          rm -rf priv
-          gleam run -m lustre/dev build app --minify
+          gleam run -m lustre/dev build configurator
           popd
 
-          test -d $target && rm -rf $target
-          mkdir $target
-          cp -r $src/priv/* $target
-
-          cp $src/index.html $target/index.html
-          sed -i 's|priv/static/configurator\.mjs|configurator/static/configurator.min.mjs|' $target/index.html
+          sed -i 's|/configurator\.js|/configurator/configurator.js|' $target/index.html
         '';
       in
       {
@@ -50,10 +44,10 @@
             scripts.lustre-build
 
             # Gleam
-            erlang_27
+            beam27Packages.erlang
+            beam27Packages.rebar3
             gleam
             inotify-tools
-            rebar3
           ];
 
           shellHook = ''

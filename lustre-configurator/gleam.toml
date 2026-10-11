@@ -5,9 +5,72 @@ target = "javascript"
 gleam = ">= 1.9.0"
 
 [dependencies]
-gleam_stdlib = ">= 0.44.0 and < 2.0.0"
+gleam_stdlib = ">= 1.0.0 and < 2.0.0"
 lustre = ">= 5.0.3 and < 6.0.0"
 
 [dev-dependencies]
 gleeunit = ">= 1.0.0 and < 2.0.0"
-lustre_dev_tools = ">= 1.8.0 and < 2.0.0"
+lustre_dev_tools = ">= 2.0.0 and < 3.0.0"
+
+[tools.lustre.build]
+minify = true
+outdir = "../configurator"
+
+[tools.lustre.dev]
+host = "0.0.0.0"
+
+[tools.lustre.html]
+title = "Inbucket Configurator"
+
+[[tools.lustre.html.stylesheets]]
+content = """
+      html, body, div {
+        font-family: Verdana, Geneva, sans-serif;
+      }
+
+      #app {
+        margin: 20px auto;
+        max-width: 800px;
+      }
+
+      summary.section {
+        border-bottom: solid 1px #000;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 20px 0;
+      }
+
+      h3 {
+        margin-top: 0;
+      }
+
+      samp {
+        font-family: Consolas, Monaco, monospace;
+        font-weight: bold;
+      }
+
+      code {
+        background-color: #d0dfef;
+        font-family: Consolas, Monaco, monospace;
+        padding: 1px 5px;
+      }
+
+      #config-form {
+        margin: 20px auto;
+        max-width: 800px;
+      }
+
+      .config-item {
+        background-color: #e0efff;
+        margin: 4px 0;
+        padding: 10px;
+      }
+
+      .env-line {
+        font-family: Consolas, Monaco, monospace;
+      }
+
+      input[type=text] {
+        width: 300px;
+      }
+"""
